@@ -3,6 +3,8 @@ package com.speedment.jpastreamer.demo.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "film", schema = "sakila")
@@ -18,20 +20,19 @@ public class Film implements Serializable {
 
     @Column(name = "description", nullable = false, columnDefinition = "text")
     private String description;
-/*
-    @Column(name = "release_year", nullable = false, columnDefinition = "year")
-    private Year releaseYear;
-    */
 
-/*
     @ManyToOne
-    @JoinColumn(name = "language_id")
+    @JoinColumn(name="language_id", nullable = false)
     private Language language;
 
-    @ManyToOne
-    @JoinColumn(name = "original_language_id")
-    private Language originalLanguage;
-*/
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "film_actor",
+            joinColumns = { @JoinColumn(name = "film_id") },
+            inverseJoinColumns = { @JoinColumn(name = "actor_id") }
+    )
+    List<Actor> actors = new ArrayList<>();
+
     @Column(name = "rental_duration", columnDefinition = "smallint(5)")
     private Integer rentalDuration;
 
@@ -43,12 +44,6 @@ public class Film implements Serializable {
 
     @Column(name = "replacement_cost", columnDefinition = "decimal(5,2)")
     private Float replacementCost;
-
-/*
-    @Enumerated(EnumType.STRING)
-    @Column(name = "rating", columnDefinition = "enum('G','PG','PG-13','R','NC-17')")
-    @Convert(converter = FilmRatingConverter.class)
-    private FilmRating rating;*/
 
     @Column(name = "rating", columnDefinition = "enum('G','PG','PG-13','R','NC-17')")
     private String rating;
@@ -82,33 +77,22 @@ public class Film implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-/*
-    public Year getReleaseYear() {
-        return releaseYear;
-    }
 
-    public void setReleaseYear(Year releaseYear) {
-        this.releaseYear = releaseYear;
-    }*/
-
-    /*
     public Language getLanguage() {
         return language;
     }
 
-    public void setLanguage(Language language) {
+    public void setOriginalLanguage(Language language) {
         this.language = language;
     }
 
-    public Language getOriginalLanguage() {
-        return originalLanguage;
+    public List<Actor> getActors() {
+        return actors;
     }
 
-    public void setOriginalLanguage(Language originalLanguage) {
-        this.originalLanguage = originalLanguage;
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
     }
-    */
-
 
     public Integer getRentalDuration() {
         return rentalDuration;
@@ -141,14 +125,6 @@ public class Film implements Serializable {
     public void setReplacementCost(Float replacementCost) {
         this.replacementCost = replacementCost;
     }
-/*
-    public FilmRating getRating() {
-        return rating;
-    }
-
-    public void setRating(FilmRating rating) {
-        this.rating = rating;
-    }*/
 
     public String getRating() {
         return rating;
@@ -180,11 +156,13 @@ public class Film implements Serializable {
                 "filmId=" + filmId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", language=" + language +
+                ", actors=" + actors +
                 ", rentalDuration=" + rentalDuration +
                 ", rentalRate=" + rentalRate +
                 ", length=" + length +
                 ", replacementCost=" + replacementCost +
-                ", rating=" + rating +
+                ", rating='" + rating + '\'' +
                 ", specialFeatures='" + specialFeatures + '\'' +
                 ", lastUpdate=" + lastUpdate +
                 '}';
