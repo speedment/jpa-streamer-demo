@@ -38,6 +38,8 @@ public class TransactionDemo {
                 .sorted()
                 .limit(5)
                 .forEach(f -> System.out.format("The rental rate for %s is $%f.\n", f.getTitle(), f.getRentalRate()));
+
+        jpaStreamer.close();
     }
 
     /* Performs a transaction that increases the rental rate of every R-rated film (for adults only) with one dollar */

@@ -36,6 +36,9 @@ Below is a summary of the included examples.
 ### Simple Demo 2
 [This example](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo2.java) shows how to select five films with rating G, sort them by descending length and skip the first ten entries. 
 
+### Paging Demo
+[This example](src/main/java/com/speedment/jpastreamer/demo/PagingDemo.java) demonstrates how to serve a page request from a GUI or a similar application. 
+
 ### Pivot Demo
 [This example](src/main/java/com/speedment/jpastreamer/demo/PivotDemo.java) demonstrates how to make a pivot table containing all the actors and the number of films they have participated in for each film rating category (e.g. “PG-13”). 
 
