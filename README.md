@@ -46,7 +46,7 @@ Below is a summary of the included examples.
 [This example](src/main/java/com/speedment/jpastreamer/demo/ManyToOneDemo.java) maps every film with rating PG-13 to its spoken language.
 
 ### ManyToMany Demo
-[This example](src/main/java/com/speedment/jpastreamer/demo/ManyToMany.java) demonstrates how to create a filmography that maps every actor to a list of films that they have starred in.
+[This example](src/main/java/com/speedment/jpastreamer/demo/ManyToManyDemo.java) demonstrates how to create a filmography that maps every actor to a list of films that they have starred in.
 
 ### Transaction Demo 
 [This example](src/main/java/com/speedment/jpastreamer/demo/TransactionDemo.java) demonstrates a JPA transaction that updates the rental rate of a selection of films.
