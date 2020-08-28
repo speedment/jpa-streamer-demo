@@ -30,25 +30,25 @@ mvn exec:java@PivotDemo
 ## Demos
 Below is a summary of the included examples. 
 
-#### Simple Demo 1 
+### Simple Demo 1 
 [This example](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo1.java) shows how to create a stream of films of length between 100 and 120 minutes.
 
-#### Simple Demo 2
+### Simple Demo 2
 [This example](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo2.java) shows how to select five films with rating G, sort them by descending length and skip the first ten entries. 
 
-#### Pivot Demo
+### Pivot Demo
 [This example](src/main/java/com/speedment/jpastreamer/demo/PivotDemo.java) demonstrates how to make a pivot table containing all the actors and the number of films they have participated in for each film rating category (e.g. “PG-13”). 
 
-#### OneToMany Demo
+### OneToMany Demo
 [This example](src/main/java/com/speedment/jpastreamer/demo/OneToManyDemo.java) maps the languages to a list of all films that are spoken in that language.
 
-#### ManyToOne Demo
+### ManyToOne Demo
 [This example](src/main/java/com/speedment/jpastreamer/demo/ManyToOneDemo.java) maps every film with rating PG-13 to its spoken language.
 
-#### ManyToMany Demo
+### ManyToMany Demo
 [This example](src/main/java/com/speedment/jpastreamer/demo/ManyToMany.java) demonstrates how to create a filmography that maps every actor to a list of films that they have starred in.
 
-#### Transaction Demo 
+### Transaction Demo 
 [This example](src/main/java/com/speedment/jpastreamer/demo/TransactionDemo.java) demonstrates a JPA transaction that updates the rental rate of a selection of films.
 
 ## Configuration
