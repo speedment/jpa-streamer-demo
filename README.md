@@ -1,17 +1,17 @@
 # JPAstreamer Demo
 
 This repo contains examples showing how [JPAstreamer](https://github.com/speedment/jpa-streamer) can be used in conjunction
-with Hibernate. Although, please note that JPAstreamer can be used with *any JPA provider*. 
+with Hibernate. Although, please note that JPAstreamer can be used with **any** JPA provider. 
 
 ## Example Database 
-The demo makes use of the [MYSQL Sakila database](https://dev.mysql.com/doc/sakila/en/). It can either be downloaded directly from Oracle as described [here](https://dev.mysql.com/doc/sakila/en/sakila-installation.html) or used directly via a [Sakila Docker instance](https://hub.docker.com/r/restsql/mysql-sakila/) by issuing the following commands: 
+The demo makes use of the [MySQL Sakila database](https://dev.mysql.com/doc/sakila/en/). It can either be downloaded from Oracle as described [here](https://dev.mysql.com/doc/sakila/en/sakila-installation.html) or used directly via a [Sakila Docker instance](https://hub.docker.com/r/restsql/mysql-sakila/) by issuing the following commands: 
 
 ```shell script
 $ docker pull restsql/mysql-sakila
 $ docker run -d --publish 3306:3306 --name mysqld restsql/mysql-sakila
 ```
 ## Running the Demo Code
-The easiest way to run the demo code is to clone the repository as a whole. Then the programs can be run directly either via your IDE or via Maven commands as described below. Before you run the programs, make sure you have access to the example database either locally or via Docker. 
+The easiest way to run the demo code is to clone the repository as a whole. Then the programs can be run either via your IDE or via Maven commands as described below. Before you run the programs, make sure you have access to the example database either locally or via Docker. 
 
 ### Run via IDE
 Open the project as a Maven project in your IDE and execute any of the main-methods in one of the Demo-classes. 
