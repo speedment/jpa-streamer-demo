@@ -17,42 +17,37 @@ The easiest way to run the demo code is to clone the repository as a whole. Then
 Open the project as a Maven project in your IDE and execute any of the main-methods in one of the Demo-classes. 
 
 ### Run via Maven
-To execute any of the demos, use the command: 
+To execute any of the demos, use the command `mvn install exec:java@` followed by the demo name. For example: 
 
 ```shell script
-mvn install exec:java@FooDemo
-```
-Meaning you can e.g. run the pivot demo by typing: 
-
-```shell script
-mvn install exec:java@PivotDemo 
+mvn install exec:java@SimpleDemo1 
 ```
 ## Demos
 Below is a summary of the included examples. 
 
-### Simple Demo 1 
-[This example](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo1.java) shows how to create a stream of films of length between 100 and 120 minutes.
+### SimpleDemo1 
+[SimpleDemo1](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo1.java) shows how to create a stream of films of length between 100 and 120 minutes.
 
-### Simple Demo 2
-[This example](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo2.java) shows how to select five films with rating G, sort them by descending length and skip the first ten entries. 
+### SimpleDemo2
+[SimpleDemo2](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo2.java) shows how to select five films with rating G, sort them by descending length and skip the first ten entries. 
 
-### Paging Demo
-[This example](src/main/java/com/speedment/jpastreamer/demo/PagingDemo.java) demonstrates how to serve a page request from a GUI or a similar application. 
+### PagingDemo
+[PagingDemo](src/main/java/com/speedment/jpastreamer/demo/PagingDemo.java) demonstrates how to serve a page request from a GUI or a similar application. 
 
-### Pivot Demo
-[This example](src/main/java/com/speedment/jpastreamer/demo/PivotDemo.java) demonstrates how to make a pivot table containing all the actors and the number of films they have participated in for each film rating category (e.g. “PG-13”). 
+### PivotDemo
+[PivotDemo](src/main/java/com/speedment/jpastreamer/demo/PivotDemo.java) demonstrates how to make a pivot table containing all the actors and the number of films they have participated in for each film rating category (e.g. “PG-13”). 
 
-### OneToMany Demo
-[This example](src/main/java/com/speedment/jpastreamer/demo/OneToManyDemo.java) maps the languages to a list of all films that are spoken in that language.
+### OneToManyDemo
+[OneToManyDemo](src/main/java/com/speedment/jpastreamer/demo/OneToManyDemo.java) maps the languages to a list of all films that are spoken in that language.
 
-### ManyToOne Demo
-[This example](src/main/java/com/speedment/jpastreamer/demo/ManyToOneDemo.java) maps every film with rating PG-13 to its spoken language.
+### ManyToOneDemo
+[ManyToOneDemo](src/main/java/com/speedment/jpastreamer/demo/ManyToOneDemo.java) maps every film with rating PG-13 to its spoken language.
 
-### ManyToMany Demo
-[This example](src/main/java/com/speedment/jpastreamer/demo/ManyToManyDemo.java) demonstrates how to create a filmography that maps every actor to a list of films that they have starred in.
+### ManyToManyDemo
+[ManyToManyDemo](src/main/java/com/speedment/jpastreamer/demo/ManyToManyDemo.java) demonstrates how to create a filmography that maps every actor to a list of films that they have starred in.
 
-### Transaction Demo 
-[This example](src/main/java/com/speedment/jpastreamer/demo/TransactionDemo.java) demonstrates a JPA transaction that updates the rental rate of a selection of films.
+### TransactionDemo 
+[TransactionDemo](src/main/java/com/speedment/jpastreamer/demo/TransactionDemo.java) demonstrates a JPA transaction that updates the rental rate of a selection of films.
 
 ## Configuration
 This repository is configured to work without modification if you use the Docker instance. However, we provide you with details about the Maven and Hibernate configuration below if you wish to set up your own tests. 
