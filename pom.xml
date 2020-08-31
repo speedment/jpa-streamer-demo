@@ -92,6 +92,7 @@
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
+
                     <execution>
                         <id>PivotDemo</id>
                         <goals>
@@ -139,6 +140,19 @@
                         </goals>
                         <configuration>
                             <mainClass>com.speedment.jpastreamer.demo.ManyToManyDemo</mainClass>
+                            <classpathScope>compile</classpathScope>
+                        </configuration>
+                    </execution>
+
+
+                    <!--Shows JDBC close problem with Hibernate/MySQL JDBC-->
+                    <execution>
+                        <id>JdbcCloseIssue</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.speedment.jpastreamer.demo.internal.JdbcCloseIssue</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
