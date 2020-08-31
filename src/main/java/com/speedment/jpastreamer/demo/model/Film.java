@@ -21,11 +21,11 @@ public class Film implements Serializable {
     @Column(name = "description", nullable = false, columnDefinition = "text")
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="language_id", nullable = false)
     private Language language;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "film_actor",
             joinColumns = { @JoinColumn(name = "film_id") },

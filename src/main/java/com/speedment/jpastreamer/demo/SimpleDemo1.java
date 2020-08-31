@@ -17,9 +17,14 @@ public class SimpleDemo1 {
 
         jpaStreamer.stream(Film.class)
                 .filter(Film$.length.between(100, 120))
-                .forEach(System.out::println);
+                .forEach(SimpleDemo1::printFilm);
 
         jpaStreamer.close();
 
     }
+
+    private static void printFilm(Film f) {
+        System.out.printf("%4d %-25s %-5s %d%n", f.getFilmId(), f.getTitle(), f.getRating(), f.getLength());
+    }
+
 }

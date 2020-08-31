@@ -18,9 +18,14 @@ public class SimpleDemo2 {
                 .sorted(Film$.length.reversed().thenComparing(Film$.title.comparator()))
                 .skip(10)
                 .limit(5)
-                .forEach(System.out::println);
+                .forEach(SimpleDemo2::printFilm);
 
         jpaStreamer.close();
 
     }
+
+    private static void printFilm(Film f) {
+        System.out.printf("%4d %-25s %-5s %d%n", f.getFilmId(), f.getTitle(), f.getRating(), f.getLength());
+    }
+
 }
