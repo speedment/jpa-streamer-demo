@@ -63,7 +63,6 @@ jpaStreamer.stream(Film.class)
 
 Prints:
 ```text
-These are the films that are of length between 100 and 120 minutes:
  126 CASUALTIES ENCINO         G     179
  692 POTLUCK MIXED             G     179
  897 TORQUE BOUND              G     179
@@ -131,7 +130,12 @@ Map<Language, Set<Film>> languageFilmMap = jpaStreamer.stream(Language.class)
 
 Prints:
 ```text
-English: [INFORMER DOUBLE, CITIZEN SHREK, OCTOBER SUBMARINE, ANACONDA CONFESSIONS, ...
+French: []
+Mandarin: []
+Italian: []
+English: [INFORMER DOUBLE, CITIZEN SHREK, OCTOBER SUBMARINE, ANACONDA CONFESSIONS, ...]
+German: []
+...
 ````
 
 ### ManyToOneDemo
