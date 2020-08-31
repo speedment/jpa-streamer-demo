@@ -49,7 +49,7 @@ These are the films that are of length between 100 and 120 minutes:
   65 BEHAVIOR RUNAWAY          PG    100
 ```
 
-Stream to JPA rendering:
+Automatic Stream to JPA rendering:
 ```roomsql
 select
         Film 
@@ -59,7 +59,7 @@ select
         Film.length between 100 and 120 
 ```
 
-JPA to Hibernate SQL rendering:
+Automatic JPA to Hibernate SQL rendering:
 ```roomsql
 select
     film0_.film_id as film_id1_1_,
