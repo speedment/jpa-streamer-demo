@@ -20,12 +20,12 @@ Open the project as a Maven project in your IDE and execute any of the main-meth
 To execute any of the demos, use the command: 
 
 ```shell script
-mvn exec:java@FooDemo
+mvn install exec:java@FooDemo
 ```
 Meaning you can e.g. run the pivot demo by typing: 
 
 ```shell script
-mvn exec:java@PivotDemo 
+mvn install exec:java@PivotDemo 
 ```
 ## Demos
 Below is a summary of the included examples. 
