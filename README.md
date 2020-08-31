@@ -34,6 +34,21 @@ jpaStreamer.stream(Film.class)
     .forEach(SimpleDemo1::printFilm);
 ```
 
+Prints:
+```text
+These are the films that are of length between 100 and 120 minutes:
+   4 AFFAIR PREJUDICE          G     117
+   9 ALABAMA DEVIL             PG-13 114
+  19 AMADEUS HOLY              PG    113
+  32 APOCALYPSE FLAMINGOS      R     119
+  44 ATTACKS HATE              PG-13 113
+  46 AUTUMN CROW               G     108
+  48 BACKLASH UNDEFEATED       PG-13 118
+  54 BANGER PINOCCHIO          R     113
+  62 BED HIGHBALL              NC-17 106
+  65 BEHAVIOR RUNAWAY          PG    100
+```
+
 ### SimpleDemo2
 [SimpleDemo2](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo2.java) shows how to select five films with rating G, sort them by descending length and skip the first ten entries. 
 
@@ -46,6 +61,16 @@ jpaStreamer.stream(Film.class)
     .forEach(SimpleDemo2::printFilm);
 ```
 
+Prints:
+```text
+These are the films that are of length between 100 and 120 minutes:
+ 126 CASUALTIES ENCINO         G     179
+ 692 POTLUCK MIXED             G     179
+ 897 TORQUE BOUND              G     179
+ 958 WARDROBE PHANTOM          G     178
+ 280 EMPIRE MALKOVICH          G     177
+```
+
 ### PagingDemo
 [PagingDemo](src/main/java/com/speedment/jpastreamer/demo/PagingDemo.java) demonstrates how to serve a page request from a GUI or a similar application.
 
@@ -56,6 +81,19 @@ return jpaStreamer.stream(Film.class)
     .limit(PAGE_SIZE)
     .collect(Collectors.toList());
 ``` 
+
+Prints:
+```text
+CYCLONE FAMILY
+DADDY PITTSBURGH
+DAISY MENAGERIE
+DALMATIONS SWEDEN
+DANCES NONE
+DANCING FEVER
+DANGEROUS UPTOWN
+...
+```
+
 
 ### PivotDemo
 [PivotDemo](src/main/java/com/speedment/jpastreamer/demo/PivotDemo.java) demonstrates how to make a pivot table containing all the actors and the number of films they have participated in for each film rating category (e.g. “PG-13”).
@@ -71,6 +109,15 @@ Map<Actor, Map<String, Long>> pivot = jpaStreamer.stream(Actor.class)
             );
 ```` 
 
+Prints:
+```text
+SCARLETT BENING: {PG-13=7, R=5, NC-17=4, PG=5, G=5}
+WOODY HOFFMAN: {PG-13=7, R=6, NC-17=5, PG=6, G=7}
+ED MANSFIELD: {PG-13=4, R=8, NC-17=9, PG=5, G=6}
+PARKER GOLDBERG: {PG-13=9, R=4, NC-17=5, G=2, PG=4}
+...
+```
+
 ### OneToManyDemo
 [OneToManyDemo](src/main/java/com/speedment/jpastreamer/demo/OneToManyDemo.java) maps the languages to a list of all films that are spoken in that language.
 
@@ -81,6 +128,11 @@ Map<Language, Set<Film>> languageFilmMap = jpaStreamer.stream(Language.class)
         toMap(Function.identity(),Language::getFilms)
     );
 ```
+
+Prints:
+```text
+English: [INFORMER DOUBLE, CITIZEN SHREK, OCTOBER SUBMARINE, ANACONDA CONFESSIONS, ...
+````
 
 ### ManyToOneDemo
 [ManyToOneDemo](src/main/java/com/speedment/jpastreamer/demo/ManyToOneDemo.java) maps every film with rating PG-13 to its spoken language.
@@ -93,6 +145,17 @@ Map<Film, Language> languageMap = jpaStreamer.stream(Film.class)
      );
 ```
 
+Prints:
+```text
+EXPECATIONS NATURAL: English
+SINNERS ATLANTIS: English
+TRIP NEWTON: English
+WRONG BEHAVIOR: English
+STRICTLY SCARFACE: English
+MICROCOSMOS PARADISE: English
+...
+````
+
 
 ### ManyToManyDemo
 [ManyToManyDemo](src/main/java/com/speedment/jpastreamer/demo/ManyToManyDemo.java) demonstrates how to create a filmography that maps every actor to a list of films that they have starred in.
@@ -104,6 +167,14 @@ Map<Actor, List<Film>> filmography = jpaStreamer.stream(Actor.class)
      );
 
 ```
+
+Prints:
+```text
+MARY TANDY: [BARBARELLA STREETCAR, CHILL LUCK, DANGEROUS UPTOWN, ...]
+KEVIN BLOOM: [AMERICAN CIRCUS, BOOGIE AMELIE, CITIZEN SHREK, ...]
+DUSTIN TAUTOU: [AFRICAN EGG, AUTUMN CROW, BANGER PINOCCHIO, ...]
+...
+````
 
 ### TransactionDemo 
 [TransactionDemo](src/main/java/com/speedment/jpastreamer/demo/TransactionDemo.java) demonstrates a JPA transaction that updates the rental rate of a selection of films.
@@ -126,6 +197,24 @@ try {
     em.getTransaction().rollback();
 }
 ```
+
+Prints:
+```text
+Rental rates before raise:
+The rental rate for AIRPORT POLLOCK is $4.990000.
+The rental rate for ALONE TRIP is $0.990000.
+The rental rate for AMELIE HELLFIGHTERS is $4.990000.
+The rental rate for AMERICAN CIRCUS is $4.990000.
+The rental rate for ANACONDA CONFESSIONS is $0.990000.
+...
+Rental rates after the raise:
+The rental rate for AIRPORT POLLOCK is $5.990000.
+The rental rate for ALONE TRIP is $1.990000.
+The rental rate for AMELIE HELLFIGHTERS is $5.990000.
+The rental rate for AMERICAN CIRCUS is $5.990000.
+The rental rate for ANACONDA CONFESSIONS is $1.990000.
+...
+````
 
 ## Configuration
 This repository is configured to work without modification if you use the Docker instance. However, we provide you with details about the Maven and Hibernate configuration below if you wish to set up your own tests. 

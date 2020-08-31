@@ -143,6 +143,16 @@
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>TransactionDemo</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.speedment.jpastreamer.demo.TransactionDemo</mainClass>
+                            <classpathScope>compile</classpathScope>
+                        </configuration>
+                    </execution>
 
 
                     <!--Shows JDBC close problem with Hibernate/MySQL JDBC-->
