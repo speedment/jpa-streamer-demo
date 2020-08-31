@@ -49,6 +49,36 @@ These are the films that are of length between 100 and 120 minutes:
   65 BEHAVIOR RUNAWAY          PG    100
 ```
 
+Stream to JPA rendering:
+```roomsql
+select
+        Film 
+    from
+        Film as Film 
+    where
+        Film.length between 100 and 120 
+```
+
+JPA to Hibernate SQL rendering:
+```roomsql
+select
+    film0_.film_id as film_id1_1_,
+    film0_.description as descript2_1_,
+    film0_.language_id as languag11_1_,
+    film0_.last_update as last_upd3_1_,
+    film0_.length as length4_1_,
+    film0_.rating as rating5_1_,
+    film0_.rental_duration as rental_d6_1_,
+    film0_.rental_rate as rental_r7_1_,
+    film0_.replacement_cost as replacem8_1_,
+    film0_.special_features as special_9_1_,
+    film0_.title as title10_1_ 
+from
+    film film0_ 
+where
+    film0_.length between 100 and 120
+```
+
 ### SimpleDemo2
 [SimpleDemo2](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo2.java) shows how to select five films with rating G, sort them by descending length and skip the first ten entries. 
 
