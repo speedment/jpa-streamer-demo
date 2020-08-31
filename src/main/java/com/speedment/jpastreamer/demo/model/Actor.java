@@ -20,7 +20,7 @@ public class Actor {
     private String lastName;
 
     @ManyToMany(mappedBy = "actors")
-    List<Film> films = new ArrayList<>();
+    private List<Film> films = new ArrayList<>();
 
     public Integer getActorId() {
         return actorId;

@@ -21,17 +21,17 @@ public class Film implements Serializable {
     @Column(name = "description", nullable = false, columnDefinition = "text")
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name="language_id", nullable = false)
     private Language language;
 
-    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "film_actor",
             joinColumns = { @JoinColumn(name = "film_id") },
             inverseJoinColumns = { @JoinColumn(name = "actor_id") }
     )
-    List<Actor> actors = new ArrayList<>();
+    private List<Actor> actors = new ArrayList<>();
 
     @Column(name = "rental_duration", columnDefinition = "smallint(5)")
     private Integer rentalDuration;
