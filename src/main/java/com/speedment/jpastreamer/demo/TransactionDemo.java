@@ -16,10 +16,12 @@ import javax.persistence.Persistence;
  */
 public class TransactionDemo {
 
-    private static JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
-            .build();
-
     public static void main(String[] args) {
+
+        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("sakila");
+        final EntityManager em = emf.createEntityManager();
+        final JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder(emf)
+                .build();
 
         System.out.println("Rental rates before raise:");
 
@@ -29,7 +31,7 @@ public class TransactionDemo {
                 .limit(5)
                 .forEach(f -> System.out.format("The rental rate for %s is $%f.\n", f.getTitle(), f.getRentalRate()));
 
-        updateRentalRates();
+        updateRentalRates(jpaStreamer, em);
 
         System.out.println("Rental rates after the raise:");
 
@@ -40,13 +42,20 @@ public class TransactionDemo {
                 .forEach(f -> System.out.format("The rental rate for %s is $%f.\n", f.getTitle(), f.getRentalRate()));
 
         jpaStreamer.close();
+        em.close();
+        emf.close();
+
+
+
+
+        // Called due to a bug in the MySQL JDBC driver
+        // Thread mysql-cj-abandoned-connection-cleanup gets stuck
+        // See https://github.com/speedment/jpa-streamer-demo/issues/1
+        System.exit(0);
     }
 
     /* Performs a transaction that increases the rental rate of every R-rated film (for adults only) with one dollar */
-    private static void updateRentalRates() {
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("sakila");
-        EntityManager em = emf.createEntityManager();
+    private static void updateRentalRates(final JPAStreamer jpaStreamer, final EntityManager em) {
 
         try {
             em.getTransaction().begin();
