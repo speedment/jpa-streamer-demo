@@ -4,10 +4,14 @@ import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.model.Film;
 import com.speedment.jpastreamer.demo.model.Film$;
 import com.speedment.jpastreamer.demo.model.Language;
+import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
 
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
+import static java.util.stream.Collectors.*;
 
 /**
  * A Many-to-One relationship is defined as a relationship between two tables where many multiple rows
@@ -23,17 +27,18 @@ public class ManyToOneDemo {
         JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
                 .build();
 
-        Map<Film, Language> languageMap = jpaStreamer.stream(Film.class)
+        Map<Film, Language> languageMap = jpaStreamer.stream(of(Film.class).joining(Film$.language))
                 .filter(Film$.rating.equal("PG-13"))
-                .collect(
-                        Collectors.toMap(Function.identity(),
-                                Film::getLanguage
+                .collect(toMap(
+                        Function.identity(),
+                        Film::getLanguage
                         )
                 );
 
         languageMap
                 .forEach(
-                        (k, v) -> System.out.format("%s: %s\n", k.getTitle(), v.getName()));
+                        (k, v) -> System.out.format("%s: %s\n", k.getTitle(), v.getName())
+                );
 
         jpaStreamer.close();
 

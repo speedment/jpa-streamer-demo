@@ -20,7 +20,7 @@ public class PagingDemo {
         JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
                 .build();
 
-        getPage(jpaStreamer, 10, Film$.title)
+        filmPage(jpaStreamer, 10, Film$.title)
                 .forEach(f -> System.out.format("%s\n", f.getTitle()));
 
         jpaStreamer.close();
@@ -35,7 +35,7 @@ public class PagingDemo {
     }
 
     // The page number (starting with page = 0) and ordering will be given as parameters.
-    private static List<Film> getPage(JPAStreamer jpaStreamer, int page, Comparator<Film> comparator) {
+    private static List<Film> filmPage(JPAStreamer jpaStreamer, int page, Comparator<Film> comparator) {
         return jpaStreamer.stream(Film.class)
                 .sorted(comparator)
                 .skip(page * PAGE_SIZE)

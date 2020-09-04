@@ -79,6 +79,15 @@ where
     film0_.length between 100 and 120
 ```
 
+### SimpleDemo1WithJoining 
+[SimpleDemo1WithJoining](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo1WithJoining.java) as SimpleDemo1 but showing how to join in fields avoiding the "N + 1 select problem".
+
+```java
+jpaStreamer.stream(of(Film.class).joining(Film$.actors).joining(Film$.language))
+    .filter(Film$.length.between(100, 120))
+    .forEach(SimpleDemo1::printFilm);
+```
+
 ### SimpleDemo2
 [SimpleDemo2](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo2.java) shows how to select five films with rating G, sort them by descending length and skip the first ten entries. 
 

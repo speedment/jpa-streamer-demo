@@ -13,7 +13,7 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <jpa-streamer-version>0.1.1</jpa-streamer-version>
+        <jpa-streamer-version>0.1.2-SNAPSHOT</jpa-streamer-version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -79,6 +79,16 @@
                         </goals>
                         <configuration>
                             <mainClass>com.speedment.jpastreamer.demo.SimpleDemo1</mainClass>
+                            <classpathScope>compile</classpathScope>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>SimpleDemo1WithJoining</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.speedment.jpastreamer.demo.SimpleDemo1WithJoining</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>

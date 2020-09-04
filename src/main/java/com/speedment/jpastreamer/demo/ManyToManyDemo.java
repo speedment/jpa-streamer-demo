@@ -2,12 +2,17 @@ package com.speedment.jpastreamer.demo;
 
 import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.model.Actor;
+import com.speedment.jpastreamer.demo.model.Actor$;
 import com.speedment.jpastreamer.demo.model.Film;
+import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
 
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
 
 /**
  * A Many-to-Many relationship is defined as a relationship between two tables where many multiple rows
@@ -23,7 +28,7 @@ public class ManyToManyDemo {
         JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
                 .build();
 
-        Map<Actor, List<Film>> filmography = jpaStreamer.stream(Actor.class)
+        Map<Actor, List<Film>> filmography = jpaStreamer.stream(of(Actor.class).joining(Actor$.films))
                 .collect(
                         Collectors.toMap(Function.identity(),
                                 Actor::getFilms
