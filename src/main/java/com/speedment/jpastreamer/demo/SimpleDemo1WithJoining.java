@@ -3,9 +3,6 @@ package com.speedment.jpastreamer.demo;
 import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.model.Film;
 import com.speedment.jpastreamer.demo.model.Film$;
-import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
-
-import java.util.stream.Stream;
 
 import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
 
