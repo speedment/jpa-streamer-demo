@@ -13,7 +13,7 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <jpa-streamer-version>0.1.2-SNAPSHOT</jpa-streamer-version>
+        <jpa-streamer-version>0.1.2</jpa-streamer-version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
