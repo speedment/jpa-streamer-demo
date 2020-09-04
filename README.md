@@ -109,8 +109,8 @@ Prints:
  280 EMPIRE MALKOVICH          G     177
 ```
 
-### PagingDemo
-[PagingDemo](src/main/java/com/speedment/jpastreamer/demo/PagingDemo.java) demonstrates how to serve a page request from a GUI or a similar application.
+### PaginationDemo
+[PaginationDemo](src/main/java/com/speedment/jpastreamer/demo/PaginationDemo.java) demonstrates how to serve a page request from a GUI or a similar application.
 
 ```java
 return jpaStreamer.stream(Film.class)

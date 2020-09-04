@@ -114,12 +114,12 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>PagingDemo</id>
+                        <id>PaginationDemo</id>
                         <goals>
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.PagingDemo</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.PaginationDemo</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>

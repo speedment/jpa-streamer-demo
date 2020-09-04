@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * This example demonstrates how to serve a page request from a GUI or a similar application.
  */
-public class PagingDemo {
+public class PaginationDemo {
 
     private static final int PAGE_SIZE = 20;
 
