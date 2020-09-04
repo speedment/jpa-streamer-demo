@@ -156,6 +156,22 @@ PARKER GOLDBERG: {PG-13=9, R=4, NC-17=5, G=2, PG=4}
 ...
 ```
 
+### PartitionDemo
+[PartitionDemo](src/main/java/com/speedment/jpastreamer/demo/PartitionDemo.java) demonstrates how to partiton films into two buckets depending on film length:
+
+````java
+Map<Boolean, List<Film>> map = jpaStreamer.stream(Film.class)
+    .collect(
+            Collectors.partitioningBy(Film$.length.greaterThan(120))
+    );
+```` 
+
+Prints:
+```text
+long is false has 543 films
+long is  true has 457 films
+```
+
 ### OneToManyDemo
 [OneToManyDemo](src/main/java/com/speedment/jpastreamer/demo/OneToManyDemo.java) maps the languages to a list of all films that are spoken in that language.
 

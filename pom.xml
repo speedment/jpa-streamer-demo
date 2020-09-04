@@ -124,6 +124,16 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>PartitionDemo</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.speedment.jpastreamer.demo.PartitionDemo</mainClass>
+                            <classpathScope>compile</classpathScope>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>OneToManyDemo</id>
                         <goals>
                             <goal>java</goal>
