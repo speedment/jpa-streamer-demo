@@ -10,8 +10,7 @@ public class SimpleDemo2 {
 
     public static void main(String[] args) {
 
-        JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
-                .build();
+        JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         jpaStreamer.stream(Film.class)
                 .filter(Film$.rating.equal("G"))

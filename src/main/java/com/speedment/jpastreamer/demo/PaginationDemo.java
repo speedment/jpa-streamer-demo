@@ -17,8 +17,7 @@ public class PaginationDemo {
 
     public static void main(String[] args) {
 
-        JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
-                .build();
+        JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         filmPage(jpaStreamer, 10, Film$.title)
                 .forEach(f -> System.out.format("%s\n", f.getTitle()));

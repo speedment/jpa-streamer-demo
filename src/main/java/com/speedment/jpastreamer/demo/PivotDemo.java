@@ -23,8 +23,7 @@ public class PivotDemo {
 
     public static void main(String[] args) {
 
-        JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
-                .build();
+        JPAStreamer jpaStreamer = JPAStreamer.of("sakila");;
 
         Map<Actor, Map<String, Long>> pivot = jpaStreamer.stream(of(Actor.class).joining(Actor$.films))
                 .collect(

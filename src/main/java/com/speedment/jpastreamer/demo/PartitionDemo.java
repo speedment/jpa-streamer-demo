@@ -25,8 +25,7 @@ public class PartitionDemo {
 
     public static void main(String[] args) {
 
-        JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
-                .build();
+        JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         Map<Boolean, List<Film>> map = jpaStreamer.stream(Film.class)
                 .collect(

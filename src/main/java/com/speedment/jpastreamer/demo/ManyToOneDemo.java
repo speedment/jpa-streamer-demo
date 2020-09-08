@@ -24,8 +24,7 @@ public class ManyToOneDemo {
 
     public static void main(String[] args) {
 
-        JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
-                .build();
+        JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         Map<Film, Language> languageMap = jpaStreamer.stream(of(Film.class).joining(Film$.language))
                 .filter(Film$.rating.equal("PG-13"))

@@ -17,8 +17,7 @@ public class SimpleDemo1WithJoining {
 
     public static void main(String[] args) throws InterruptedException {
 
-        JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
-                .build();
+        JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         System.out.println("These are the films that are of length between 100 and 120 minutes:");
 

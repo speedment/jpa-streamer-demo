@@ -20,8 +20,7 @@ public class TransactionDemo {
 
         final EntityManagerFactory emf = Persistence.createEntityManagerFactory("sakila");
         final EntityManager em = emf.createEntityManager();
-        final JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder(emf)
-                .build();
+        JPAStreamer jpaStreamer = JPAStreamer.of(emf);
 
         System.out.println("Rental rates before raise:");
 

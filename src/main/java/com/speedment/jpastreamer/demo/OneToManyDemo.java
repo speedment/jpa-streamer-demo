@@ -25,8 +25,7 @@ public class OneToManyDemo {
 
     public static void main(String[] args) {
 
-        JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
-                .build();
+        JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         Map<Language, Set<Film>> languageFilmMap = jpaStreamer.stream(of(Language.class).joining(Language$.films))
                 .collect(toMap(
