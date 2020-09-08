@@ -8,7 +8,7 @@ import com.speedment.jpastreamer.demo.model.Film$;
 
 public class SimpleDemo2 {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         JPAStreamer jpaStreamer = JPAStreamer.createJPAStreamerBuilder("sakila")
                 .build();
