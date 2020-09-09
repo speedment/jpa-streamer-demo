@@ -22,8 +22,11 @@ public class Film implements Serializable {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name="language_id", nullable = false)
+    @JoinColumn(name="language_id", nullable = false, updatable = false, insertable = false)
     private Language language;
+
+/*    @Column(name="language_id", nullable = false)
+    private Language originalLanguageId;*/
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -166,5 +169,44 @@ public class Film implements Serializable {
                 ", specialFeatures='" + specialFeatures + '\'' +
                 ", lastUpdate=" + lastUpdate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Film film = (Film) o;
+
+        if (filmId != null ? !filmId.equals(film.filmId) : film.filmId != null) return false;
+        if (title != null ? !title.equals(film.title) : film.title != null) return false;
+        if (description != null ? !description.equals(film.description) : film.description != null) return false;
+        //if (originalLanguageId != null ? !originalLanguageId.equals(film.originalLanguageId) : film.originalLanguageId != null) return false;
+        if (rentalDuration != null ? !rentalDuration.equals(film.rentalDuration) : film.rentalDuration != null)
+            return false;
+        if (rentalRate != null ? !rentalRate.equals(film.rentalRate) : film.rentalRate != null) return false;
+        if (length != null ? !length.equals(film.length) : film.length != null) return false;
+        if (replacementCost != null ? !replacementCost.equals(film.replacementCost) : film.replacementCost != null)
+            return false;
+        if (rating != null ? !rating.equals(film.rating) : film.rating != null) return false;
+        if (specialFeatures != null ? !specialFeatures.equals(film.specialFeatures) : film.specialFeatures != null)
+            return false;
+        return lastUpdate != null ? lastUpdate.equals(film.lastUpdate) : film.lastUpdate == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = filmId != null ? filmId.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        //result = 31 * result + (originalLanguageId != null ? originalLanguageId.hashCode() : 0);
+        result = 31 * result + (rentalDuration != null ? rentalDuration.hashCode() : 0);
+        result = 31 * result + (rentalRate != null ? rentalRate.hashCode() : 0);
+        result = 31 * result + (length != null ? length.hashCode() : 0);
+        result = 31 * result + (replacementCost != null ? replacementCost.hashCode() : 0);
+        result = 31 * result + (rating != null ? rating.hashCode() : 0);
+        result = 31 * result + (specialFeatures != null ? specialFeatures.hashCode() : 0);
+        result = 31 * result + (lastUpdate != null ? lastUpdate.hashCode() : 0);
+        return result;
     }
 }
