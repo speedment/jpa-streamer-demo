@@ -24,6 +24,7 @@
         <dependency>
             <groupId>com.speedment.jpastreamer</groupId>
             <artifactId>jpastreamer-core</artifactId>
+            <!--Make sure to use the latest version-->
             <version>${jpa-streamer-version}</version>
         </dependency>
 
@@ -71,7 +72,9 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>target/generated-sources/annotations</source>
+                                <source>
+                                    target/generated-sources/annotations
+                                </source>
                             </sources>
                         </configuration>
                     </execution>
