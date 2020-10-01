@@ -31,7 +31,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.4.21.Final</version>
+            <version>5.4.22.Final</version>
         </dependency>
 
         <!--Fixes Fatal error compiling: java.lang.NoClassDefFoundError: javax/persistence/Entity: javax.persistence.Entity -->
