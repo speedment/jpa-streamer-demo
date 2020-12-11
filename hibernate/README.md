@@ -24,7 +24,7 @@ mvn install exec:java@SimpleDemo1
 Below is a summary of the included examples. 
 
 ### SimpleDemo1 
-[SimpleDemo1](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo1.java) shows how to create a stream of films of length between 100 and 120 minutes.
+[SimpleDemo1](src/main/java/com/speedment/jpastreamer/demo/hibernate/SimpleDemo1.java) shows how to create a stream of films of length between 100 and 120 minutes.
 
 ```java
 jpaStreamer.stream(Film.class)
@@ -78,7 +78,7 @@ where
 ```
 
 ### SimpleDemo1WithJoining 
-[SimpleDemo1WithJoining](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo1WithJoining.java) as SimpleDemo1 but showing how to join in fields avoiding the "N + 1 select problem".
+[SimpleDemo1WithJoining](src/main/java/com/speedment/jpastreamer/demo/hibernate/SimpleDemo1WithJoining.java) as SimpleDemo1 but showing how to join in fields avoiding the "N + 1 select problem".
 
 ```java
 jpaStreamer.stream(of(Film.class).joining(Film$.actors).joining(Film$.language))
@@ -87,7 +87,7 @@ jpaStreamer.stream(of(Film.class).joining(Film$.actors).joining(Film$.language))
 ```
 
 ### SimpleDemo2
-[SimpleDemo2](src/main/java/com/speedment/jpastreamer/demo/SimpleDemo2.java) shows how to select five films with rating G, sort them by descending length and skip the first ten entries. 
+[SimpleDemo2](src/main/java/com/speedment/jpastreamer/demo/hibernate/SimpleDemo2.java) shows how to select five films with rating G, sort them by descending length and skip the first ten entries. 
 
 ```java
 jpaStreamer.stream(Film.class)
@@ -108,7 +108,7 @@ Prints:
 ```
 
 ### PaginationDemo
-[PaginationDemo](src/main/java/com/speedment/jpastreamer/demo/PaginationDemo.java) demonstrates how to serve a page request from a GUI or a similar application.
+[PaginationDemo](src/main/java/com/speedment/jpastreamer/demo/hibernate/PaginationDemo.java) demonstrates how to serve a page request from a GUI or a similar application.
 
 ```java
 return jpaStreamer.stream(Film.class)
@@ -132,7 +132,7 @@ DANGEROUS UPTOWN
 
 
 ### PivotDemo
-[PivotDemo](src/main/java/com/speedment/jpastreamer/demo/PivotDemo.java) demonstrates how to make a pivot table containing all the actors and the number of films they have participated in for each film rating category (e.g. “PG-13”).
+[PivotDemo](src/main/java/com/speedment/jpastreamer/demo/hibernate/PivotDemo.java) demonstrates how to make a pivot table containing all the actors and the number of films they have participated in for each film rating category (e.g. “PG-13”).
 
 ````java
 Map<Actor, Map<String, Long>> pivot = jpaStreamer.stream(Actor.class)
@@ -155,7 +155,7 @@ PARKER GOLDBERG: {PG-13=9, R=4, NC-17=5, G=2, PG=4}
 ```
 
 ### PartitionDemo
-[PartitionDemo](src/main/java/com/speedment/jpastreamer/demo/PartitionDemo.java) demonstrates how to partiton films into two buckets depending on film length:
+[PartitionDemo](src/main/java/com/speedment/jpastreamer/demo/hibernate/PartitionDemo.java) demonstrates how to partiton films into two buckets depending on film length:
 
 ````java
 Map<Boolean, List<Film>> map = jpaStreamer.stream(Film.class)
@@ -171,7 +171,7 @@ long is  true has 457 films
 ```
 
 ### OneToManyDemo
-[OneToManyDemo](src/main/java/com/speedment/jpastreamer/demo/OneToManyDemo.java) maps the languages to a list of all films that are spoken in that language.
+[OneToManyDemo](src/main/java/com/speedment/jpastreamer/demo/hibernate/OneToManyDemo.java) maps the languages to a list of all films that are spoken in that language.
 
 ```java
 Map<Language, Set<Film>> languageFilmMap = jpaStreamer.stream(Language.class)
@@ -192,7 +192,7 @@ German: []
 ````
 
 ### ManyToOneDemo
-[ManyToOneDemo](src/main/java/com/speedment/jpastreamer/demo/ManyToOneDemo.java) maps every film with rating PG-13 to its spoken language.
+[ManyToOneDemo](src/main/java/com/speedment/jpastreamer/demo/hibernate/ManyToOneDemo.java) maps every film with rating PG-13 to its spoken language.
 
 ```java
 Map<Film, Language> languageMap = jpaStreamer.stream(Film.class)
@@ -215,7 +215,7 @@ MICROCOSMOS PARADISE: English
 
 
 ### ManyToManyDemo
-[ManyToManyDemo](src/main/java/com/speedment/jpastreamer/demo/ManyToManyDemo.java) demonstrates how to create a filmography that maps every actor to a list of films that they have starred in.
+[ManyToManyDemo](src/main/java/com/speedment/jpastreamer/demo/hibernate/ManyToManyDemo.java) demonstrates how to create a filmography that maps every actor to a list of films that they have starred in.
 
 ```java
 Map<Actor, List<Film>> filmography = jpaStreamer.stream(Actor.class)
@@ -234,7 +234,7 @@ DUSTIN TAUTOU: [AFRICAN EGG, AUTUMN CROW, BANGER PINOCCHIO, ...]
 ````
 
 ### TransactionDemo 
-[TransactionDemo](src/main/java/com/speedment/jpastreamer/demo/TransactionDemo.java) demonstrates a JPA transaction that updates the rental rate of a selection of films.
+[TransactionDemo](src/main/java/com/speedment/jpastreamer/demo/hibernate/TransactionDemo.java) demonstrates a JPA transaction that updates the rental rate of a selection of films.
 
 ```java
 try {
