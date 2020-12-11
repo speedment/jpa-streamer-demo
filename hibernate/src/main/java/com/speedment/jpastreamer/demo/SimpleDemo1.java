@@ -5,29 +5,21 @@ import com.speedment.jpastreamer.demo.model.Film;
 import com.speedment.jpastreamer.demo.model.Film$;
 import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
 
-import java.util.function.Function;
-import java.util.stream.Stream;
+import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
 
 /** This example shows how to select films that are between 100 and 120 minutes long. */
 
-public class UnionDemo {
+public class SimpleDemo1 {
 
     public static void main(String[] args) {
 
         JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
-        StreamConfiguration<Film> configuration = StreamConfiguration.of(Film.class)
-                .joining(Film$.actors)
-                .joining(Film$.language);
+        System.out.println("These are the films that are of length between 100 and 120 minutes:");
 
-        Stream.of(
-                jpaStreamer.stream(configuration).filter(Film$.length.greaterThan(120)),
-                jpaStreamer.stream(configuration).filter(Film$.rating.equal("PG-13"))
-        )
-                .flatMap(Function.identity())
-                .distinct()
-                .forEachOrdered(System.out::println);
-
+        jpaStreamer.stream(Film.class)
+            .filter(Film$.length.between(100, 120))
+            .forEach(SimpleDemo1::printFilm);
 
         jpaStreamer.close();
 

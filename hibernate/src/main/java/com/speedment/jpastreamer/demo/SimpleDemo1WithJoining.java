@@ -3,23 +3,30 @@ package com.speedment.jpastreamer.demo;
 import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.model.Film;
 import com.speedment.jpastreamer.demo.model.Film$;
-import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
 
 import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
 
-/** This example shows how to select films that are between 100 and 120 minutes long. */
+/**
+ * This example shows how to select films that are between 100 and 120 minutes long.
+ * just as in SimpleDemo1 but where we join in elements to avoid the 1 + N select
+ * problem.
+ *
+ */
 
-public class SimpleDemo1 {
+public class SimpleDemo1WithJoining {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         System.out.println("These are the films that are of length between 100 and 120 minutes:");
 
-        jpaStreamer.stream(Film.class)
-                .filter(Film$.length.between(100, 120))
-                .forEach(SimpleDemo1::printFilm);
+        // As the stream below prints out all fields, we are joining
+        // in the actor and language columns directly:
+
+        jpaStreamer.stream(of(Film.class).joining(Film$.actors).joining(Film$.language))
+            .filter(Film$.length.between(100, 120))
+            .forEach(System.out::println);
 
         jpaStreamer.close();
 
@@ -30,10 +37,6 @@ public class SimpleDemo1 {
         // Thread mysql-cj-abandoned-connection-cleanup gets stuck
         // See https://github.com/speedment/jpa-streamer-demo/issues/1
         System.exit(0);
-    }
-
-    private static void printFilm(Film f) {
-        System.out.printf("%4d %-25s %-5s %d%n", f.getFilmId(), f.getTitle(), f.getRating(), f.getLength());
     }
 
 }

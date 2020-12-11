@@ -25,20 +25,20 @@ public class TransactionDemo {
         System.out.println("Rental rates before raise:");
 
         jpaStreamer.stream(Film.class)
-                .filter(Film$.rating.equal("R"))
-                .sorted()
-                .limit(5)
-                .forEach(f -> System.out.format("The rental rate for %s is $%f.\n", f.getTitle(), f.getRentalRate()));
+            .filter(Film$.rating.equal("R"))
+            .sorted()
+            .limit(5)
+            .forEach(f -> System.out.format("The rental rate for %s is $%f.\n", f.getTitle(), f.getRentalRate()));
 
         updateRentalRates(jpaStreamer, em);
 
         System.out.println("Rental rates after the raise:");
 
         jpaStreamer.stream(Film.class)
-                .filter(Film$.rating.equal("R"))
-                .sorted()
-                .limit(5)
-                .forEach(f -> System.out.format("The rental rate for %s is $%f.\n", f.getTitle(), f.getRentalRate()));
+            .filter(Film$.rating.equal("R"))
+            .sorted()
+            .limit(5)
+            .forEach(f -> System.out.format("The rental rate for %s is $%f.\n", f.getTitle(), f.getRentalRate()));
 
         jpaStreamer.close();
         em.close();
@@ -59,12 +59,12 @@ public class TransactionDemo {
         try {
             em.getTransaction().begin();
             jpaStreamer.stream(Film.class)
-                    .filter(Film$.rating.equal("R"))
-                    .forEach(f -> {
-                                f.setRentalRate(f.getRentalRate() + 1);
-                                em.merge(f);
-                            }
-                    );
+                .filter(Film$.rating.equal("R"))
+                .forEach(f -> {
+                        f.setRentalRate(f.getRentalRate() + 1);
+                        em.merge(f);
+                    }
+                );
 
             em.getTransaction().commit();
         } catch(Exception e) {

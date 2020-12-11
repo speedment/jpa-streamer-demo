@@ -4,11 +4,9 @@ import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.model.Film;
 import com.speedment.jpastreamer.demo.model.Film$;
 import com.speedment.jpastreamer.demo.model.Language;
-import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
 
 import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
 import static java.util.stream.Collectors.*;
@@ -27,17 +25,19 @@ public class ManyToOneDemo {
         JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         Map<Film, Language> languageMap = jpaStreamer.stream(of(Film.class).joining(Film$.language))
-                .filter(Film$.rating.equal("PG-13"))
-                .collect(toMap(
-                        Function.identity(),
-                        Film::getLanguage
-                        )
-                );
+            .filter(Film$.rating.equal("PG-13"))
+            .collect(toMap(
+                Function.identity(),
+                Film::getLanguage
+            )
+        );
 
-        languageMap
-                .forEach(
-                        (k, v) -> System.out.format("%s: %s\n", k.getTitle(), v.getName())
-                );
+        languageMap.forEach(
+            (k, v) -> System.out.format("%s: %s\n",
+                k.getTitle(),
+                v.getName()
+            )
+        );
 
         jpaStreamer.close();
 

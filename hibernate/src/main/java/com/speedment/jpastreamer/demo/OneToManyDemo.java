@@ -28,19 +28,18 @@ public class OneToManyDemo {
         JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         Map<Language, Set<Film>> languageFilmMap = jpaStreamer.stream(of(Language.class).joining(Language$.films))
-                .collect(toMap(
-                        Function.identity(),
-                        Language::getFilms
-                        )
-                );
+            .collect(toMap(
+                Function.identity(),
+                Language::getFilms
+            )
+        );
 
-        languageFilmMap
-                .forEach(
-                        (k, v) -> System.out.format("%s: %s\n",
-                                k.getName(),
-                                v.stream().map(Film::getTitle).collect(toList())
-                        )
-                );
+        languageFilmMap.forEach(
+            (k, v) -> System.out.format("%s: %s\n",
+                k.getName(),
+                v.stream().map(Film::getTitle).collect(toList())
+            )
+        );
 
         jpaStreamer.close();
 

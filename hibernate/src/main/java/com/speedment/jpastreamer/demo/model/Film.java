@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "film", schema = "sakila")
@@ -178,20 +179,20 @@ public class Film implements Serializable {
 
         Film film = (Film) o;
 
-        if (filmId != null ? !filmId.equals(film.filmId) : film.filmId != null) return false;
-        if (title != null ? !title.equals(film.title) : film.title != null) return false;
-        if (description != null ? !description.equals(film.description) : film.description != null) return false;
+        if (!Objects.equals(filmId, film.filmId)) return false;
+        if (!Objects.equals(title, film.title)) return false;
+        if (!Objects.equals(description, film.description)) return false;
         //if (originalLanguageId != null ? !originalLanguageId.equals(film.originalLanguageId) : film.originalLanguageId != null) return false;
-        if (rentalDuration != null ? !rentalDuration.equals(film.rentalDuration) : film.rentalDuration != null)
+        if (!Objects.equals(rentalDuration, film.rentalDuration))
             return false;
-        if (rentalRate != null ? !rentalRate.equals(film.rentalRate) : film.rentalRate != null) return false;
-        if (length != null ? !length.equals(film.length) : film.length != null) return false;
-        if (replacementCost != null ? !replacementCost.equals(film.replacementCost) : film.replacementCost != null)
+        if (!Objects.equals(rentalRate, film.rentalRate)) return false;
+        if (!Objects.equals(length, film.length)) return false;
+        if (!Objects.equals(replacementCost, film.replacementCost))
             return false;
-        if (rating != null ? !rating.equals(film.rating) : film.rating != null) return false;
-        if (specialFeatures != null ? !specialFeatures.equals(film.specialFeatures) : film.specialFeatures != null)
+        if (!Objects.equals(rating, film.rating)) return false;
+        if (!Objects.equals(specialFeatures, film.specialFeatures))
             return false;
-        return lastUpdate != null ? lastUpdate.equals(film.lastUpdate) : film.lastUpdate == null;
+        return Objects.equals(lastUpdate, film.lastUpdate);
     }
 
     @Override

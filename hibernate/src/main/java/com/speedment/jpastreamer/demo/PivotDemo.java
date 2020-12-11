@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.of;
 import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.flatMapping;
 import static java.util.stream.Collectors.groupingBy;
 
 /**
@@ -26,15 +27,15 @@ public class PivotDemo {
         JPAStreamer jpaStreamer = JPAStreamer.of("sakila");;
 
         Map<Actor, Map<String, Long>> pivot = jpaStreamer.stream(of(Actor.class).joining(Actor$.films))
-                .collect(
-                        groupingBy(
-                                Function.identity(),
-                                Collectors.flatMapping(
-                                        a -> a.getFilms().stream(),
-                                        groupingBy(Film::getRating, counting())
-                                )
-                        )
-                );
+            .collect(
+                groupingBy(
+                    Function.identity(),
+                    flatMapping(
+                        a -> a.getFilms().stream(),
+                        groupingBy(Film::getRating, counting())
+                    )
+                )
+            );
 
         pivot.forEach((k, v) -> System.out.format("%s %s: %s\n", k.getFirstName(), k.getLastName(), v));
 

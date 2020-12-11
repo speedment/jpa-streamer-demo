@@ -13,11 +13,11 @@ public class SimpleDemo2 {
         JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         jpaStreamer.stream(Film.class)
-                .filter(Film$.rating.equal("G"))
-                .sorted(Film$.length.reversed().thenComparing(Film$.title.comparator()))
-                .skip(10)
-                .limit(5)
-                .forEach(SimpleDemo2::printFilm);
+            .filter(Film$.rating.equal("G"))
+            .sorted(Film$.length.reversed().thenComparing(Film$.title.comparator()))
+            .skip(10)
+            .limit(5)
+            .forEach(SimpleDemo2::printFilm);
 
         jpaStreamer.close();
 

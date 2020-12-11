@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.of;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.partitioningBy;
 
 /**
  * This example demonstrates how to partition data in two buckets,
@@ -28,13 +29,9 @@ public class PartitionDemo {
         JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         Map<Boolean, List<Film>> map = jpaStreamer.stream(Film.class)
-                .collect(
-                        Collectors.partitioningBy(Film$.length.greaterThan(120))
-                );
+            .collect(partitioningBy(Film$.length.greaterThan(120)));
 
-        map.forEach((k, v) -> {
-            System.out.format("long is %5s has %d films%n", k, v.size());
-        });
+        map.forEach((k, v) -> System.out.format("long is %5s has %d films%n", k, v.size()));
 
         jpaStreamer.close();
 

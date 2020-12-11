@@ -36,9 +36,9 @@ public class PaginationDemo {
     // The page number (starting with page = 0) and ordering will be given as parameters.
     private static List<Film> filmPage(JPAStreamer jpaStreamer, int page, Comparator<Film> comparator) {
         return jpaStreamer.stream(Film.class)
-                .sorted(comparator)
-                .skip(page * PAGE_SIZE)
-                .limit(PAGE_SIZE)
-                .collect(Collectors.toList());
+            .sorted(comparator)
+            .skip(page * PAGE_SIZE)
+            .limit(PAGE_SIZE)
+            .collect(Collectors.toList());
     }
 }

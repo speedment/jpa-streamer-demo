@@ -3,6 +3,7 @@ package com.speedment.jpastreamer.demo.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -60,9 +61,8 @@ public class Language implements Serializable {
 
         Language language = (Language) o;
 
-        if (languageId != null ? !languageId.equals(language.languageId) : language.languageId != null) return false;
-        if (name != null ? !name.equals(language.name) : language.name != null) return false;
-        return true;
+        if (!Objects.equals(languageId, language.languageId)) return false;
+        return Objects.equals(name, language.name);
     }
 
     @Override

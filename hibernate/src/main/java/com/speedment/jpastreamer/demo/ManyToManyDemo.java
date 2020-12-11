@@ -4,15 +4,14 @@ import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.model.Actor;
 import com.speedment.jpastreamer.demo.model.Actor$;
 import com.speedment.jpastreamer.demo.model.Film;
-import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
 
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
+import static java.util.stream.Collectors.toMap;
 
 /**
  * A Many-to-Many relationship is defined as a relationship between two tables where many multiple rows
@@ -28,16 +27,18 @@ public class ManyToManyDemo {
         JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
         Map<Actor, List<Film>> filmography = jpaStreamer.stream(of(Actor.class).joining(Actor$.films))
-                .collect(
-                        Collectors.toMap(Function.identity(),
-                                Actor::getFilms
-                        )
-                );
+            .collect(toMap(
+                Function.identity(),
+                Actor::getFilms
+            )
+        );
 
-        filmography
-                .forEach(
-                        (k, v) -> System.out.format("%s: %s\n", k.getFirstName() + " " + k.getLastName(),
-                                v.stream().map(Film::getTitle).collect(Collectors.toList())));
+        filmography.forEach(
+            (k, v) -> System.out.format("%s: %s\n",
+                k.getFirstName() + " " + k.getLastName(),
+                v.stream().map(Film::getTitle).collect(Collectors.toList())
+            )
+        );
 
         jpaStreamer.close();
 

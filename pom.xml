@@ -7,6 +7,7 @@
     <groupId>com.speedment.jpastreamer</groupId>
     <artifactId>demo</artifactId>
     <version>0.1.0</version>
+    <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,42 +20,48 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <dependencies>
+    <modules>
+        <module>hibernate</module>
+        <module>spring</module>
+    </modules>
 
-        <dependency>
-            <groupId>com.speedment.jpastreamer</groupId>
-            <artifactId>jpastreamer-core</artifactId>
-            <!--Make sure to use the latest version-->
-            <version>${jpa-streamer-version}</version>
-        </dependency>
+    <dependencyManagement>
+        <dependencies>
 
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.4.24.Final</version>
-        </dependency>
+            <dependency>
+                <groupId>com.speedment.jpastreamer</groupId>
+                <artifactId>jpastreamer-core</artifactId>
+                <!--Make sure to use the latest version-->
+                <version>${jpa-streamer-version}</version>
+            </dependency>
 
-        <!--Fixes Fatal error compiling: java.lang.NoClassDefFoundError: javax/persistence/Entity: javax.persistence.Entity -->
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>1.0.2</version>
-        </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>5.4.24.Final</version>
+            </dependency>
 
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>1.10.18</version>
-        </dependency>
+            <!--Fixes Fatal error compiling: java.lang.NoClassDefFoundError: javax/persistence/Entity: javax.persistence.Entity -->
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>1.0.2</version>
+            </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.22</version>
-        </dependency>
+            <dependency>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy</artifactId>
+                <version>1.10.18</version>
+            </dependency>
 
-    </dependencies>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.22</version>
+            </dependency>
 
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -88,130 +95,6 @@
                     <source>9</source>
                     <target>9</target>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <id>SimpleDemo1</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.SimpleDemo1</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>SimpleDemo1WithJoining</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.SimpleDemo1WithJoining</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>SimpleDemo2</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.SimpleDemo2</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>PivotDemo</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.PivotDemo</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>PaginationDemo</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.PaginationDemo</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>PartitionDemo</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.PartitionDemo</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>OneToManyDemo</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.OneToManyDemo</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>ManyToOneDemo</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.ManyToOneDemo</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>ManyToManyDemo</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.ManyToManyDemo</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>TransactionDemo</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.TransactionDemo</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-
-
-                    <!--Shows JDBC close problem with Hibernate/MySQL JDBC-->
-                    <execution>
-                        <id>JdbcCloseIssue</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.internal.JdbcCloseIssue</mainClass>
-                            <classpathScope>compile</classpathScope>
-                        </configuration>
-                    </execution>
-
-
-                </executions>
             </plugin>
 
         </plugins>

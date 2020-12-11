@@ -3,6 +3,7 @@ package com.speedment.jpastreamer.demo.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "actor", schema = "sakila")
@@ -70,10 +71,9 @@ public class Actor {
 
         Actor actor = (Actor) o;
 
-        if (actorId != null ? !actorId.equals(actor.actorId) : actor.actorId != null) return false;
-        if (firstName != null ? !firstName.equals(actor.firstName) : actor.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(actor.lastName) : actor.lastName != null) return false;
-        return true;
+        if (!Objects.equals(actorId, actor.actorId)) return false;
+        if (!Objects.equals(firstName, actor.firstName)) return false;
+        return Objects.equals(lastName, actor.lastName);
     }
 
     @Override
