@@ -1,8 +1,8 @@
-package com.speedment.jpastreamer.demo;
+package com.speedment.jpastreamer.demo.hibernate;
 
 import com.speedment.jpastreamer.application.JPAStreamer;
-import com.speedment.jpastreamer.demo.model.Film;
-import com.speedment.jpastreamer.demo.model.Film$;
+import com.speedment.jpastreamer.demo.hibernate.model.Film;
+import com.speedment.jpastreamer.demo.hibernate.model.Film$;
 
 import java.util.Comparator;
 import java.util.List;

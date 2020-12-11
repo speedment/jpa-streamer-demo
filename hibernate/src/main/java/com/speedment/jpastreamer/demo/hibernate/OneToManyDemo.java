@@ -1,19 +1,17 @@
-package com.speedment.jpastreamer.demo;
+package com.speedment.jpastreamer.demo.hibernate;
+
+import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.of;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 
 import com.speedment.jpastreamer.application.JPAStreamer;
-import com.speedment.jpastreamer.demo.model.Film;
-import com.speedment.jpastreamer.demo.model.Language;
-import com.speedment.jpastreamer.demo.model.Language$;
-import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
+import com.speedment.jpastreamer.demo.hibernate.model.Film;
+import com.speedment.jpastreamer.demo.hibernate.model.Language;
+import com.speedment.jpastreamer.demo.hibernate.model.Language$;
 
-import javax.persistence.criteria.JoinType;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
-
-import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toMap;
 
 /**
  * A One-to-Many relationship is defined as a relationship between two tables where a row from a first

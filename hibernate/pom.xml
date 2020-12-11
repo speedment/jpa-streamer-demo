@@ -55,7 +55,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.SimpleDemo1</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.SimpleDemo1</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -65,7 +65,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.SimpleDemo1WithJoining</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.SimpleDemo1WithJoining</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -75,7 +75,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.SimpleDemo2</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.SimpleDemo2</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -86,7 +86,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.PivotDemo</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.PivotDemo</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -96,7 +96,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.PaginationDemo</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.PaginationDemo</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -106,7 +106,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.PartitionDemo</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.PartitionDemo</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -116,7 +116,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.OneToManyDemo</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.OneToManyDemo</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -126,7 +126,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.ManyToOneDemo</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.ManyToOneDemo</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -136,7 +136,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.ManyToManyDemo</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.ManyToManyDemo</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -146,7 +146,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.TransactionDemo</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.TransactionDemo</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
@@ -159,7 +159,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.speedment.jpastreamer.demo.internal.JdbcCloseIssue</mainClass>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.internal.JdbcCloseIssue</mainClass>
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>

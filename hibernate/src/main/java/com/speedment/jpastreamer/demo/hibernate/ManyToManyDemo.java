@@ -1,17 +1,17 @@
-package com.speedment.jpastreamer.demo;
+package com.speedment.jpastreamer.demo.hibernate;
+
+import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.of;
+import static java.util.stream.Collectors.toMap;
 
 import com.speedment.jpastreamer.application.JPAStreamer;
-import com.speedment.jpastreamer.demo.model.Actor;
-import com.speedment.jpastreamer.demo.model.Actor$;
-import com.speedment.jpastreamer.demo.model.Film;
+import com.speedment.jpastreamer.demo.hibernate.model.Actor;
+import com.speedment.jpastreamer.demo.hibernate.model.Actor$;
+import com.speedment.jpastreamer.demo.hibernate.model.Film;
 
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
-import static java.util.stream.Collectors.toMap;
 
 /**
  * A Many-to-Many relationship is defined as a relationship between two tables where many multiple rows

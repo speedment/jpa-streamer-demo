@@ -1,4 +1,4 @@
-package com.speedment.jpastreamer.demo.model;
+package com.speedment.jpastreamer.demo.hibernate.model;
 
 import javax.persistence.*;
 import java.io.Serializable;

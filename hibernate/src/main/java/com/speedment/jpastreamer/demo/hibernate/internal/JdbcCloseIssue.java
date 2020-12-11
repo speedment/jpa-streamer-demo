@@ -1,8 +1,4 @@
-package com.speedment.jpastreamer.demo.internal;
-
-import com.speedment.jpastreamer.application.JPAStreamer;
-import com.speedment.jpastreamer.demo.model.Film;
-import com.speedment.jpastreamer.demo.model.Film$;
+package com.speedment.jpastreamer.demo.hibernate.internal;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

@@ -1,19 +1,17 @@
-package com.speedment.jpastreamer.demo;
-
-import com.speedment.jpastreamer.application.JPAStreamer;
-import com.speedment.jpastreamer.demo.model.Actor;
-import com.speedment.jpastreamer.demo.model.Actor$;
-import com.speedment.jpastreamer.demo.model.Film;
-import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
-
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+package com.speedment.jpastreamer.demo.hibernate;
 
 import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.of;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.flatMapping;
 import static java.util.stream.Collectors.groupingBy;
+
+import com.speedment.jpastreamer.application.JPAStreamer;
+import com.speedment.jpastreamer.demo.hibernate.model.Actor;
+import com.speedment.jpastreamer.demo.hibernate.model.Actor$;
+import com.speedment.jpastreamer.demo.hibernate.model.Film;
+
+import java.util.Map;
+import java.util.function.Function;
 
 /**
  * This example demonstrates how to make a pivot table containing all the actors and the number of

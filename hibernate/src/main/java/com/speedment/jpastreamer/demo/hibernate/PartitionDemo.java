@@ -1,20 +1,13 @@
-package com.speedment.jpastreamer.demo;
+package com.speedment.jpastreamer.demo.hibernate;
+
+import static java.util.stream.Collectors.partitioningBy;
 
 import com.speedment.jpastreamer.application.JPAStreamer;
-import com.speedment.jpastreamer.demo.model.Actor;
-import com.speedment.jpastreamer.demo.model.Actor$;
-import com.speedment.jpastreamer.demo.model.Film;
-import com.speedment.jpastreamer.demo.model.Film$;
+import com.speedment.jpastreamer.demo.hibernate.model.Film;
+import com.speedment.jpastreamer.demo.hibernate.model.Film$;
 
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.of;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.partitioningBy;
 
 /**
  * This example demonstrates how to partition data in two buckets,

@@ -1,10 +1,10 @@
-package com.speedment.jpastreamer.demo;
+package com.speedment.jpastreamer.demo.hibernate;
+
+import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.of;
 
 import com.speedment.jpastreamer.application.JPAStreamer;
-import com.speedment.jpastreamer.demo.model.Film;
-import com.speedment.jpastreamer.demo.model.Film$;
-
-import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.*;
+import com.speedment.jpastreamer.demo.hibernate.model.Film;
+import com.speedment.jpastreamer.demo.hibernate.model.Film$;
 
 /**
  * This example shows how to select films that are between 100 and 120 minutes long.
