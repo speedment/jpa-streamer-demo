@@ -15,7 +15,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <jpa-streamer-version>0.1.8</jpa-streamer-version>
-        <spring-boot-version>2.4.0</spring-boot-version>
+        <spring-boot-version>2.4.1</spring-boot-version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
