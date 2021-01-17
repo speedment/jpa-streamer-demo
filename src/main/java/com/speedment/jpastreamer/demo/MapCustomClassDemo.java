@@ -1,11 +1,17 @@
-package com.speedment.jpastreamer.demo.hibernate;
+package com.speedment.jpastreamer.demo;
 
 import com.speedment.jpastreamer.application.JPAStreamer;
-import com.speedment.jpastreamer.demo.hibernate.model.Film;
+import com.speedment.jpastreamer.demo.model.Film;
+import com.speedment.jpastreamer.demo.model.Film$;
+import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
 
-/** This example shows how to select films that are between 100 and 120 minutes long. */
+import javax.persistence.Tuple;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class SelectDemo {
+/** This example shows how to map an entity to a custom class. */
+
+public class MapCustomClassDemo {
 
     public static void main(String[] args) {
 
@@ -14,14 +20,10 @@ public class SelectDemo {
         // This will be replaced by a better way in future versions
 
         jpaStreamer.stream(Film.class)
-            .map(TitleLength::new)
-            .forEach(System.out::println);
-
+                .map(TitleLength::new)
+                .forEach(System.out::println);
 
         jpaStreamer.close();
-
-
-
 
         // Called due to a bug in the MySQL JDBC driver
         // Thread mysql-cj-abandoned-connection-cleanup gets stuck

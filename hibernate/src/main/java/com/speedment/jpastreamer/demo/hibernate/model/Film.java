@@ -11,6 +11,17 @@ import java.util.Objects;
 @Table(name = "film", schema = "sakila")
 public class Film implements Serializable {
 
+    public Film() {}
+
+    public Film(int filmId) {
+        this.filmId = filmId;
+    }
+
+    public Film(Integer filmId, String title) {
+        this.filmId = filmId;
+        this.title = title;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_id", nullable = false, updatable = false, columnDefinition = "smallint(5)")

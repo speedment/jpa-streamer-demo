@@ -9,6 +9,17 @@ import java.util.Objects;
 @Table(name = "actor", schema = "sakila")
 public class Actor {
 
+    public Actor() {}
+
+    public Actor(Integer actorId) {
+        this.actorId = actorId;
+    }
+
+    public Actor(Integer actorId, String firstName) {
+        this.actorId = actorId;
+        this.firstName = firstName;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "actor_id", nullable = false, updatable = false, columnDefinition = "smallint(5)")

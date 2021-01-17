@@ -10,6 +10,17 @@ import java.util.Set;
 @Table(name = "language", schema = "sakila")
 public class Language implements Serializable {
 
+    public Language() {}
+
+    public Language(Integer languageId) {
+        this.languageId = languageId;
+    }
+
+    public Language(Integer languageId, String name) {
+        this.languageId = languageId;
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "language_id", nullable = false, updatable = false, columnDefinition = "tinyint(3)")
