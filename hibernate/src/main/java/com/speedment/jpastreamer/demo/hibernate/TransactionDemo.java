@@ -19,7 +19,6 @@ public class TransactionDemo {
     public static void main(String[] args) {
 
         final EntityManagerFactory emf = Persistence.createEntityManagerFactory("sakila");
-        final EntityManager em = emf.createEntityManager();
         JPAStreamer jpaStreamer = JPAStreamer.of(emf);
 
         System.out.println("Rental rates before raise:");
@@ -30,6 +29,7 @@ public class TransactionDemo {
             .limit(5)
             .forEach(f -> System.out.format("The rental rate for %s is $%f.\n", f.getTitle(), f.getRentalRate()));
 
+        final EntityManager em = emf.createEntityManager();
         updateRentalRates(jpaStreamer, em);
 
         System.out.println("Rental rates after the raise:");

@@ -24,7 +24,7 @@ public class PartitionDemo {
         Map<Boolean, List<Film>> map = jpaStreamer.stream(Film.class)
             .collect(partitioningBy(Film$.length.greaterThan(120)));
 
-        map.forEach((k, v) -> System.out.format("long is %5s has %d films%n", k, v.size()));
+        map.forEach((k, v) -> System.out.format("length is > 120 %5s has %d films%n", k, v.size()));
 
         jpaStreamer.close();
 

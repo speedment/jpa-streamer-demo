@@ -4,8 +4,6 @@ import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.hibernate.model.Film;
 import com.speedment.jpastreamer.demo.hibernate.model.Film$;
 
-import java.util.stream.IntStream;
-
 public class MapToIntDemo {
 
     public static void main(String[] args) {
