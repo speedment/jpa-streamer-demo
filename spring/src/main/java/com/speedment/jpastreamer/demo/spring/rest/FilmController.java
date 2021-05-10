@@ -30,7 +30,7 @@ public class FilmController {
             @RequestParam(required = false, defaultValue = "10") int pageSize
     ) {
         return jpaStreamer.stream(Film.class)
-                .skip(page * pageSize)
+                .skip((long) page * pageSize)
                 .limit(pageSize)
                 .map(FilmViewModel::from);
     }

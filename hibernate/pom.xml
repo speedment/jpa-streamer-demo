@@ -15,6 +15,7 @@
 
     <dependencies>
 
+        <!--  Adds JPAstreamer and its annotation processor-->
         <dependency>
             <groupId>com.speedment.jpastreamer</groupId>
             <artifactId>jpastreamer-core</artifactId>

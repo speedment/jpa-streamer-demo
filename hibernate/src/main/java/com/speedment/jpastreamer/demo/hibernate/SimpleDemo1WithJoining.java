@@ -1,5 +1,6 @@
 package com.speedment.jpastreamer.demo.hibernate;
 
+import static com.speedment.jpastreamer.field.predicate.Inclusion.START_INCLUSIVE_END_EXCLUSIVE;
 import static com.speedment.jpastreamer.streamconfiguration.StreamConfiguration.of;
 
 import com.speedment.jpastreamer.application.JPAStreamer;
@@ -25,7 +26,7 @@ public class SimpleDemo1WithJoining {
         // in the actor and language columns directly:
 
         jpaStreamer.stream(of(Film.class).joining(Film$.actors).joining(Film$.language))
-            .filter(Film$.length.between(100, 120))
+            .filter(Film$.length.between(100, 120, START_INCLUSIVE_END_EXCLUSIVE))
             .forEach(System.out::println);
 
         jpaStreamer.close();

@@ -18,5 +18,7 @@ public class MapToIntDemo {
                 .mapToInt(Film$.length.asInt().orElse(0))
                 .forEach(System.out::println);
 
+        jpaStreamer.close();
+
     }
 }
