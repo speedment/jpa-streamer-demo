@@ -11,6 +11,9 @@ $ docker pull restsql/mysql-sakila
 $ docker run -d --publish 3306:3306 --name mysqld restsql/mysql-sakila
 ```
 
+> **_NOTE:_**  This Docker image does not support ARM64 architecture, thus if you are running on e.g. an M1 Mac, you need to emulate an Intel image by adding the flag '--platform linux/amd64' after 'docker run' in the above command. This may not always work ideally, learn more about why at the [Docker webpage](https://docs.docker.com/desktop/mac/apple-silicon/#known-issues).  
+>
+
 ### Run via IDE
 Open the project as a Maven project in your IDE and execute any of the main-methods in one of the Demo-classes. 
 
@@ -75,6 +78,15 @@ from
     film film0_ 
 where
     film0_.length between 100 and 120
+```
+
+### CountDemo 
+[CountDemo](src/main/java/com/speedment/jpastreamer/demo/hibernate/CountDemo.java) shows how to perform a count of all the elements that matches the query.
+
+```java
+long count = jpaStreamer.stream(Film.class)
+    .filter(Film$.length.between(100, 120))
+    .count(); 
 ```
 
 ### SimpleDemo1WithJoining 
@@ -341,5 +353,3 @@ As can be seen, the persistence name is "sakila" and this name is consequently u
 - **Documentation** - https://speedment.github.io/jpa-streamer
 - **Gitter Chat** - https://gitter.im/speedment/jpa-streamer
 - **Website** - www.jpastreamer.org
-
-
