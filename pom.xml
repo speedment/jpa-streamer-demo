@@ -14,7 +14,7 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <spring-boot-version>2.7.1</spring-boot-version>
+        <spring-boot-version>2.7.4</spring-boot-version>
         <jpa-streamer-version>1.1.0</jpa-streamer-version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
