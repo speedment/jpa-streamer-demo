@@ -5,6 +5,7 @@ with Hibernate and Spring. The Hibernate and Spring examples are located in thei
 
 * [Hibernate Examples](hibernate)
 * [Spring Examples](spring)
+* [Quarkus ](quarkus-hibernate-panache)
 
 ## Resources
 - **JPAstreamer on GitHub** - https://github.com/speedment/jpa-streamer
