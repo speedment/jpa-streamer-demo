@@ -24,6 +24,7 @@
     <modules>
         <module>hibernate</module>
         <module>spring</module>
+        <module>quarkus-hibernate-panache</module>
     </modules>
 
     <dependencyManagement>
