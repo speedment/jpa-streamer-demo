@@ -92,12 +92,12 @@ To get the best performance out of a Quarkus application, you'll need to build i
 
 WARNING: Building and running the application on Graal VM requires that you have properly installed Graal VM in your local environment, see link:https://quarkus.io/guides/building-native-image[Configuring Graal VM].
 
-If everything works as expected, the outcome is a native runner `quarkus-hibernate-panache-1.0.0-SNAPSHOT-runner` in the `target/` directory.
+If everything works as expected, the outcome is a native runner `quarkus-1.0.0-SNAPSHOT-runner` in the `target/` directory.
 
 You simply run it by calling:
 [source, shell script]
 ----
-./target/quarkus-hibernate-panache-1.0.0-SNAPSHOT-runner
+./target/quarkus-1.0.0-SNAPSHOT-runner
 ----
 
 You can see how long it took to boot the application in the printout that follows. Note the impressive 172 milliseconds on a standard Macbook Pro M1.
@@ -109,7 +109,7 @@ __  ____  __  _____   ___  __ ____  ______
 -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
 2023-01-12 15:45:35,645 INFO  [io.qua.sma.ope.run.OpenApiRecorder] (main) Default CORS properties will be used, please use 'quarkus.http.cors' properties instead
-2023-01-12 15:45:35,785 INFO  [io.quarkus] (main) quarkus-hibernate-panache 1.0.0-SNAPSHOT native (powered by Quarkus 2.13.1.Final) started in 0.172s. Listening on: http://0.0.0.0:9001
+2023-01-12 15:45:35,785 INFO  [io.quarkus] (main) quarkus 1.0.0-SNAPSHOT native (powered by Quarkus 2.13.1.Final) started in 0.172s. Listening on: http://0.0.0.0:9001
 2023-01-12 15:45:35,785 INFO  [io.quarkus] (main) Profile prod activated.
 2023-01-12 15:45:35,785 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-mysql, jpastreamer, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation, smallrye-openapi, spring-di, spring-web, vertx]
 ---- 
