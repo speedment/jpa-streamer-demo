@@ -15,12 +15,11 @@
 
     <dependencies>
 
-        <!--  Adds JPAstreamer and its annotation processor-->
         <dependency>
             <groupId>com.speedment.jpastreamer</groupId>
             <artifactId>jpastreamer-core</artifactId>
         </dependency>
-
+        
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -150,8 +149,16 @@
                             <classpathScope>compile</classpathScope>
                         </configuration>
                     </execution>
-
-
+                    <execution>
+                        <id>TermpOpDemo</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.speedment.jpastreamer.demo.hibernate.TermOpDemo</mainClass>
+                            <classpathScope>compile</classpathScope>
+                        </configuration>
+                    </execution>
                     <!--Shows JDBC close problem with Hibernate/MySQL JDBC-->
                     <execution>
                         <id>JdbcCloseIssue</id>
@@ -166,7 +173,36 @@
 
                 </executions>
             </plugin>
+            <!-- Marks target/generated-sources as a source folder -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>
+                                    ${project.build.directory}/generated-sources/annotations
+                                </source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <proc>only</proc>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
 </project>

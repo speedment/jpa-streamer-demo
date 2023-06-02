@@ -1,7 +1,7 @@
 package com.speedment.jpastreamer.demo.hibernate.model;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;

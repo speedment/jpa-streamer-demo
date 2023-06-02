@@ -5,7 +5,8 @@ import com.speedment.jpastreamer.demo.hibernate.model.Film;
 import com.speedment.jpastreamer.demo.hibernate.model.Film$;
 import com.speedment.jpastreamer.projection.Projection;
 
-import javax.persistence.Tuple;
+import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
+import jakarta.persistence.Tuple;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,15 @@ public class ProjectionDemo {
 
         JPAStreamer jpaStreamer = JPAStreamer.of("sakila");
 
+        // Only selects the columns id and title  
+        StreamConfiguration<Film> sc = StreamConfiguration.of(Film.class).selecting(Projection.select(Film$.filmId, Film$.title));
+        List<Film> startsWithA = jpaStreamer.stream(sc)
+                .filter(Film$.title.startsWith("A"))
+                .limit(10)
+                .collect(Collectors.toList());
+        
+        startsWithA.forEach(film -> System.out.println(film.getTitle())); 
+        
         List<Tuple> tupleList = jpaStreamer.stream(Film.class)
                 .sorted(Film$.length.reversed())
                 .limit(3)
