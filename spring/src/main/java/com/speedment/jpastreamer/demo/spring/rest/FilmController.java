@@ -3,6 +3,9 @@ package com.speedment.jpastreamer.demo.spring.rest;
 import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.spring.model.Film;
 import com.speedment.jpastreamer.demo.spring.viewmodel.FilmViewModel;
+import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
+
+import org.hibernate.annotations.QueryHints;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,6 +34,16 @@ public class FilmController {
                 .limit(pageSize)
                 .map(FilmViewModel::from);
     }
-    
+
+    @ResponseStatus(code = HttpStatus.OK)
+    @GetMapping(value = "/films-hints", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Stream<FilmViewModel> hints() {
+        return jpaStreamer.stream(
+                StreamConfiguration.of(Film.class)
+                        .withHint(QueryHints.FETCH_SIZE, 50)
+                        .withHint(QueryHints.READ_ONLY, true))
+                .map(FilmViewModel::from);
+    }
+
 }
 
