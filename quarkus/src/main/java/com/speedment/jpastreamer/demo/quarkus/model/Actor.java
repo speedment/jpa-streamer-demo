@@ -1,19 +1,25 @@
-package com.speedment.jpastreamer.demo.spring.model;
+package com.speedment.jpastreamer.demo.quarkus.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "actor", schema = "sakila")
 public class Actor {
+
+    public Actor() {}
+
+    public Actor(Integer actorId) {
+        this.actorId = actorId;
+    }
+
+    public Actor(Integer actorId, String firstName, String lastName) {
+        this.actorId = actorId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +33,7 @@ public class Actor {
     private String lastName;
 
     @ManyToMany(mappedBy = "actors")
-    private List<Film> films = new ArrayList<>();
+    private Set<Film> films = new HashSet<>();
 
     public Integer getActorId() {
         return actorId;
@@ -35,14 +41,6 @@ public class Actor {
 
     public void setActorId(Integer actorId) {
         this.actorId = actorId;
-    }
-
-    public List<Film> getFilms() {
-        return films;
-    }
-
-    public void setFilms(List<Film> films) {
-        this.films = films;
     }
 
     public String getFirstName() {
@@ -60,6 +58,11 @@ public class Actor {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public Set<Film> getFilms() {
+        return films;
+    }
+
 
     @Override
     public String toString() {

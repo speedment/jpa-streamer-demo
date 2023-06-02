@@ -9,10 +9,7 @@ import org.hibernate.annotations.QueryHints;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Stream;
 
@@ -39,13 +36,14 @@ public class FilmController {
     }
 
     @ResponseStatus(code = HttpStatus.OK)
-    @GetMapping(value = "/stream-films", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Stream<FilmViewModel> stream() {
+    @GetMapping(value = "/films-hints", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Stream<FilmViewModel> hints() {
         return jpaStreamer.stream(
                 StreamConfiguration.of(Film.class)
                         .withHint(QueryHints.FETCH_SIZE, 50)
                         .withHint(QueryHints.READ_ONLY, true))
                 .map(FilmViewModel::from);
     }
+
 }
 

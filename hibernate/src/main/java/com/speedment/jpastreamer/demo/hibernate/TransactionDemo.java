@@ -4,9 +4,9 @@ import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.hibernate.model.Film;
 import com.speedment.jpastreamer.demo.hibernate.model.Film$;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 /**
  * Transactions are an essential part of JPA that determines when modifications to the data is synchronised with the underlying database.

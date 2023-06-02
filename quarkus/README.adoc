@@ -1,0 +1,121 @@
+= Quarkus JPAStreamer Demo
+
+This project contains a simple Quarkus REST application with a number of endpoints that fetch database entries from the Sakila test database, see xref:_example_database[Sakila database]. The database is integrated using Hibernate with Panache and JPAStreamer, the latter both being Hibernate extensions that enrich the Hibernate API with more user-friendly query methods. Like Panache, JPAStreamer does not prohibit the use of HQL queries, it only extends the application with a type-safe query API. 
+
+To run the application, your environment must comply with the following prerequisites:
+
+    - JDK 11 or later installed 
+    - Sakila film database running on port 3306, see xref:_example_database[Sakila database]
+
+== Why Quarkus?
+The foundation of the Java stack far predates technologies such as cloud computing, Kubernetes and Docker, which unfortunately means most Java applications are not optimal for modern deployments. link:https://quarkus.io/[Quarkus] is a framework that changes this fact by allowing Java developers to easily create applications with a significantly reduced start-up time and memory footprint that thrives in cloud-native environments and can run on GraalVM.
+
+== Demo application
+For the most part, this demo application is structured like a regular Hibernate application. The biggest difference being that the database configuration is handled in Quarkus configuration file in `resources/application.properties`. There is also a Panache specific xref:src/main/java/com/speedment/jpastreamer/demo/quarkus/repository/FilmRepository.java[`FilmRepository`] that contains implementations of a number of queries using the JPAStreamer API to fetch data. For example, here is how you can list a limited number of films that starts with a given string, ordered by length:
+
+[source, java]
+----
+    public Stream<Film> titleStartsWithSortedByLengthLimited(String start, int limit) {
+        return jpaStreamer.stream(Film.class)
+                .filter(Film$.title.startsWith(start))
+                .sorted(Film$.length)
+                .limit(limit);
+    }
+----
+
+[#_example_database]
+=== Sakila Database
+The demo makes use of the link:https://dev.mysql.com/doc/sakila/en/[MySQL Sakila database]. It can either be downloaded from Oracle as described link:https://dev.mysql.com/doc/sakila/en/sakila-installation.html[here] or used directly via a link:https://hub.docker.com/r/restsql/mysql-sakila/[Sakila Docker instance] by issuing the following commands:
+
+[shell script]
+----
+$ docker pull restsql/mysql-sakila
+----
+
+[shell script]
+----
+$ docker run -d --publish 3306:3306 --name mysqld restsql/mysql-sakila
+----
+
+NOTE: This Docker image does not support ARM64 architecture, thus if you are running on e.g. an M1 Mac, you need to emulate an Intel image by adding the flag `--platform linux/amd64` after `docker run` in the above command. This may not always work ideally, learn more about why at the link:https://docs.docker.com/desktop/mac/apple-silicon/#known-issues[Docker webpage].
+
+=== Running the Application
+Quarkus is not only good for packaging Java application into small and alert builds, it also facilitates the development process by supporting a live-reload development mode. You can run the application in development mode with the following command:
+
+[shell script]
+----
+./mvnw compile quarkus:dev
+----
+
+NOTE: Running in dev mode means the application is quickly rebuilt whenever you make changes to any of the source files, thus you do not have to restart the application for changes to take effect. If you wish to trigger restart the application manually, press the key [s] on your keyboard.
+
+The application now runs on port 9001:
+[text]
+----
+http://localhost:9001
+----
+
+The following endpoints are available:
+
+- http://localhost:9001/list/10[http://localhost:9001/list/{limit}]
+- http://localhost:9001/sorted/10[http://localhost:9001/sorted/{limit}]
+- http://localhost:9001/paging/3[http://localhost:9001/paging/{page}]
+- http://localhost:9001/startsWithSort/K/10[http://localhost:9001/startsWithSort/{start}/{limit}]
+- http://localhost:9001/update/Updated%20description/180[http://localhost:9001/update/{desc}/{length}]
+- http://localhost:9001/actors/B[http://localhost:9001/actors/{start}]
+
+You can visualise the application dependencies using the Quarkus Dev UI available at:
+
+[text]
+----
+http://localhost:9001/q/dev/
+----
+
+=== Packaging and Running the Application
+The application can be packaged using:
+[source, shell script]
+----
+./mvnw package
+----
+
+It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
+
+NOTE: Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+
+==== Native build
+To get the best performance out of a Quarkus application, you'll need to build it natively. Quarkus makes this really easy, and all you need is the command:
+
+[source, shell script]
+----
+./mvnw install -Dnative
+----
+
+WARNING: Building and running the application on Graal VM requires that you have properly installed Graal VM in your local environment, see link:https://quarkus.io/guides/building-native-image[Configuring Graal VM].
+
+If everything works as expected, the outcome is a native runner `quarkus-1.0.0-SNAPSHOT-runner` in the `target/` directory.
+
+You simply run it by calling:
+[source, shell script]
+----
+./target/quarkus-1.0.0-SNAPSHOT-runner
+----
+
+You can see how long it took to boot the application in the printout that follows. Note the impressive 172 milliseconds on a standard Macbook Pro M1.
+
+[source, text]
+----
+__  ____  __  _____   ___  __ ____  ______ 
+--/ __ \/ / / / _ | / _ \/ //_/ / / / __/
+-/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2023-01-12 15:45:35,645 INFO  [io.qua.sma.ope.run.OpenApiRecorder] (main) Default CORS properties will be used, please use 'quarkus.http.cors' properties instead
+2023-01-12 15:45:35,785 INFO  [io.quarkus] (main) quarkus 1.0.0-SNAPSHOT native (powered by Quarkus 2.13.1.Final) started in 0.172s. Listening on: http://0.0.0.0:9001
+2023-01-12 15:45:35,785 INFO  [io.quarkus] (main) Profile prod activated.
+2023-01-12 15:45:35,785 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-mysql, jpastreamer, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation, smallrye-openapi, spring-di, spring-web, vertx]
+---- 
+
+== Resources
+
+- link:https://jpastreamer.org[JPAStreamer Website]
+- link:https://speedment.github.io/jpa-streamer/jpa-streamer/1.1.0/introduction/introduction.html[JPAStreamer Documentation]
+- link:https://quarkus.io[Quarkus Homepage]

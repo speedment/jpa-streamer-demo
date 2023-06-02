@@ -1,7 +1,7 @@
 package com.speedment.jpastreamer.demo.hibernate.internal;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 /** This example shows how to select films that are between 100 and 120 minutes long. */
 
