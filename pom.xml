@@ -14,17 +14,17 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <spring-boot-version>2.7.1</spring-boot-version>
-        <jpa-streamer-version>1.1.2</jpa-streamer-version>
+        <spring-boot-version>3.1.0</spring-boot-version>
+        <jpa-streamer-version>3.0.2-SNAPSHOT</jpa-streamer-version>
 
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <modules>
         <module>hibernate</module>
         <module>spring</module>
-        <module>quarkus-hibernate-panache</module>
+        <module>quarkus</module>
     </modules>
 
     <dependencyManagement>
@@ -46,7 +46,7 @@
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
-                <version>5.6.9.Final</version>
+                <version>6.0.2.Final</version>
             </dependency>
 
             <!--Fixes Fatal error compiling: java.lang.NoClassDefFoundError: javax/persistence/Entity: javax.persistence.Entity -->
@@ -155,15 +155,15 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>9</source>
-                    <target>9</target>
+                    <proc>only</proc>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
