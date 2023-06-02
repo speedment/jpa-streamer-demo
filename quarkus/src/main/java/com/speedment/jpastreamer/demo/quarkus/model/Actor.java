@@ -1,9 +1,10 @@
-package com.speedment.jpastreamer.demo.quarkus.hibernate.panache.model;
+package com.speedment.jpastreamer.demo.quarkus.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
 @Entity
 @Table(name = "actor", schema = "sakila")
 public class Actor {
@@ -17,7 +18,7 @@ public class Actor {
     public Actor(Integer actorId, String firstName, String lastName) {
         this.actorId = actorId;
         this.firstName = firstName;
-        this.lastName = lastName; 
+        this.lastName = lastName;
     }
 
     @Id
@@ -33,7 +34,7 @@ public class Actor {
 
     @ManyToMany(mappedBy = "actors")
     private Set<Film> films = new HashSet<>();
-    
+
     public Integer getActorId() {
         return actorId;
     }
@@ -57,12 +58,12 @@ public class Actor {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
+
     public Set<Film> getFilms() {
         return films;
     }
-    
-    
+
+
     @Override
     public String toString() {
         return "Actor{" +

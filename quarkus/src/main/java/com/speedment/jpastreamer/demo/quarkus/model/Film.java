@@ -1,6 +1,6 @@
-package com.speedment.jpastreamer.demo.quarkus.hibernate.panache.model;
+package com.speedment.jpastreamer.demo.quarkus.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -13,11 +13,11 @@ public class Film {
     @Id
     @Column(name = "film_id", columnDefinition = "SMALLINT UNSIGNED")
     private short filmId;
-    
+
     @Basic
     @Column(name = "title", columnDefinition = "VARCHAR(255)")
     private String title;
-       
+
     @Basic
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
@@ -30,23 +30,23 @@ public class Film {
     @Basic
     @Column(name = "rental_rate", columnDefinition = "DECIMAL(4,2)")
     private BigDecimal rentalRate;
-    
-    @Basic    
+
+    @Basic
     @Column(name = "length", columnDefinition = "SMALL UNSIGNED")
     private Short length;
-    
+
     @Basic
-    @Column(name = "rating", columnDefinition = "enum('G','PG','PG-13','R','NC-17')")          
+    @Column(name = "rating", columnDefinition = "enum('G','PG','PG-13','R','NC-17')")
     private String rating;
 
-    @Basic    
-    @Column(name = "replacement_cost")  
-    private BigDecimal replacementCost;
-    
     @Basic
-    @Column(name = "last_update") 
+    @Column(name = "replacement_cost")
+    private BigDecimal replacementCost;
+
+    @Basic
+    @Column(name = "last_update")
     private Timestamp lastUpdate;
-    
+
     public short getFilmId() {
         return filmId;
     }
@@ -78,7 +78,7 @@ public class Film {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public short getRentalDuration() {
         return rentalDuration;
     }
@@ -86,11 +86,11 @@ public class Film {
     public void setRentalDuration(short rentalDuration) {
         this.rentalDuration = rentalDuration;
     }
-    
+
     public String getRating() { return rating; }
-    
+
     public void setRating(String rating) { this.rating = rating; }
-    
+
     public BigDecimal getRentalRate() {
         return rentalRate;
     }
@@ -139,11 +139,11 @@ public class Film {
         actors.remove(actor);
         actor.getFilms().remove(this);
     }
-    
+
     public Set<Actor> getActors() {
-        return this.actors; 
+        return this.actors;
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
