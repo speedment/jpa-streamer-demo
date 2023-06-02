@@ -1,9 +1,9 @@
 package com.speedment.jpastreamer.demo.quarkus.repository;
 
 import com.speedment.jpastreamer.application.JPAStreamer;
-import com.speedment.jpastreamer.demo.quarkus.Film$;
 import com.speedment.jpastreamer.demo.quarkus.model.Actor;
 import com.speedment.jpastreamer.demo.quarkus.model.Film;
+import com.speedment.jpastreamer.demo.quarkus.model.Film$;
 import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
