@@ -49,7 +49,7 @@
         <dependency>
             <groupId>com.speedment.jpastreamer</groupId>
             <artifactId>jpastreamer-core</artifactId>
-            <version>3.0.2-SNAPSHOT</version>
+            <version>3.0.1</version>
         </dependency>
 
         <dependency>
