@@ -4,12 +4,14 @@ import com.speedment.jpastreamer.application.JPAStreamer;
 import com.speedment.jpastreamer.demo.spring.model.Film;
 import com.speedment.jpastreamer.demo.spring.viewmodel.FilmViewModel;
 import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
-
 import org.hibernate.annotations.QueryHints;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.stream.Stream;
 
