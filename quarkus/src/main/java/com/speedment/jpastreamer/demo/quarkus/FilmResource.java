@@ -3,7 +3,6 @@ package com.speedment.jpastreamer.demo.quarkus;
 import com.speedment.jpastreamer.demo.quarkus.model.Film;
 import com.speedment.jpastreamer.demo.quarkus.repository.FilmRepository;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -12,8 +11,6 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.stream.Collectors;
 
 @Path("/")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class FilmResource {
     
     @Inject
@@ -21,14 +18,14 @@ public class FilmResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/list/{limit}")
+    @Path("list/{limit}")
     public String list(int limit) {
         return filmRepository.listFilms(limit).map(Film::getTitle).collect(Collectors.joining("\n"));
     }
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/sorted/{limit}")
+    @Path("sorted/{limit}")
     public String sorted(int limit) {
         return filmRepository.listFilmsSortedByRatingAndLength(limit)
                 .map(f -> String.format("%s (%s): %s min\n", f.getTitle(), f.getRating(), f.getLength()))
@@ -37,7 +34,7 @@ public class FilmResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/paging/{page}")
+    @Path("paging/{page}")
     public String paging(int page) {
         return filmRepository.paging(page)
                 .map(f -> String.format("%s: %s min\n", f.getTitle(), f.getLength()))
@@ -46,7 +43,7 @@ public class FilmResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/startsWithSort/{start}/{limit}")
+    @Path("startsWithSort/{start}/{limit}")
     public String startsWithSort(String start, int limit) {
         return filmRepository.titleStartsWithSortedByLengthLimited(start, limit)
                 .map(f -> String.format("%s: %s min\n", f.getTitle(), f.getLength()))
@@ -55,7 +52,7 @@ public class FilmResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/update/{desc}/{length}")
+    @Path("update/{desc}/{length}")
     public String update(String desc, int length) {
         // Update descriptions for films longer than "length"
         filmRepository.updateDescription(desc, (short) length);
@@ -68,7 +65,7 @@ public class FilmResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/actors/{start}")
+    @Path("actors/{start}")
     public String listActors( String start) {
         final StringBuilder sb = new StringBuilder();
         return filmRepository.getCast(start)
