@@ -7,6 +7,7 @@ import com.speedment.jpastreamer.demo.quarkus.model.Film$;
 import com.speedment.jpastreamer.streamconfiguration.StreamConfiguration;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 import java.util.Map;
@@ -17,10 +18,12 @@ import java.util.stream.Stream;
 
 @ApplicationScoped
 public class FilmRepository implements PanacheRepository<Film> {
+    
+    @Inject
+    JPAStreamer jpaStreamer;
 
     private final static int PAGE_SIZE = 20;
-    private final JPAStreamer jpaStreamer = JPAStreamer.of(this::getEntityManager);
-
+    
     /**
      * Lists limit number of films 
      *
