@@ -1,6 +1,12 @@
 package com.speedment.jpastreamer.demo.hibernate.model;
 
+import com.speedment.jpastreamer.demo.hibernate.model.groups.GroupA;
+import com.speedment.jpastreamer.demo.hibernate.model.groups.GroupB;
 import jakarta.persistence.*;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -28,6 +34,8 @@ public class Film implements Serializable {
     private Integer filmId;
 
     @Column(name = "title", nullable = false, columnDefinition = "varchar(255)")
+    @NotEmpty(message = "Title may not be empty", groups = {GroupA.class, GroupB.class})
+    @NotNull(message = "Title may not be null", groups = {GroupA.class, GroupB.class})
     private String title;
 
     @Column(name = "description", nullable = false, columnDefinition = "text")
@@ -55,6 +63,10 @@ public class Film implements Serializable {
     private Float rentalRate;
 
     @Column(name = "length", columnDefinition = "smallint(5)")
+    @NotEmpty(message = "Length may not be empty", groups = {GroupA.class, GroupB.class})
+    @NotEmpty(message = "Length may not be empty", groups = {GroupA.class})
+    @NotNull(message = "Length may not be null", groups = {GroupA.class, GroupB.class})
+    @Size(min = 1, max = 300, message = "Length must be between 1 and 300 minutes characters long")
     private Integer length;
 
     @Column(name = "replacement_cost", columnDefinition = "decimal(5,2)")
