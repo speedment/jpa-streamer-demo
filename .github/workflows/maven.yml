@@ -41,6 +41,12 @@ jobs:
     - name: Hibernate - Build with Maven
       working-directory: ./hibernate
       run: mvn -B package --file pom.xml -Prelease
-    - name: Quarkus - Build with Maven
-      working-directory: ./quarkus
+    - name: Quarkus Hibernate - Build with Maven
+      working-directory: ./quarkus-hibernate
+      run: mvn -B package --file pom.xml -Prelease
+    - name: Quarkus Hibernate Panache - Build with Maven
+      working-directory: ./quarkus-hibernate-panache
+      run: mvn -B package --file pom.xml -Prelease
+    - name: Spring - Build with Maven
+      working-directory: ./spring
       run: mvn -B package --file pom.xml -Prelease
