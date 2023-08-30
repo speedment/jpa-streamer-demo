@@ -122,7 +122,6 @@ public class FilmRepository implements PanacheRepository<Film> {
                 .filter(Film$.length.greaterThan(length))
                 .forEach(f -> {
                     f.setDescription(desc);
-                    persist(f);
                 });
     }
 
