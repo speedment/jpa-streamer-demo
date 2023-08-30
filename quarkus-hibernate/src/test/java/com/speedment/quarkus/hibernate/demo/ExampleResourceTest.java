@@ -16,17 +16,16 @@ public class ExampleResourceTest {
                 .when().get("/list/10")
                 .then()
                 .statusCode(200)
-                .body(containsString("""
-                        ACADEMY DINOSAUR
-                        ACE GOLDFINGER
-                        ADAPTATION HOLES
-                        AFFAIR PREJUDICE
-                        AFRICAN EGG
-                        AGENT TRUMAN
-                        AIRPLANE SIERRA
-                        AIRPORT POLLOCK
-                        ALABAMA DEVIL
-                        ALADDIN CALENDAR"""));
+                .body(containsString("ACADEMY DINOSAUR\n" +
+                                     "ACE GOLDFINGER\n" +
+                                     "ADAPTATION HOLES\n" +
+                                     "AFFAIR PREJUDICE\n" +
+                                     "AFRICAN EGG\n" +
+                                     "AGENT TRUMAN\n" +
+                                     "AIRPLANE SIERRA\n" +
+                                     "AIRPORT POLLOCK\n" +
+                                     "ALABAMA DEVIL\n" +
+                                     "ALADDIN CALENDAR"));
     }
 
     @Test
@@ -35,17 +34,16 @@ public class ExampleResourceTest {
                 .when().get("/sorted/10")
                 .then()
                 .statusCode(200)
-                .body(containsString("""
-                        ADAPTATION HOLES (NC-17): 50 min
-                        ALADDIN CALENDAR (NC-17): 63 min
-                        ALICE FANTASIA (NC-17): 94 min
-                        ALIEN CENTER (NC-17): 46 min
-                        ALLEY EVOLUTION (NC-17): 180 min
-                        ANONYMOUS HUMAN (NC-17): 179 min
-                        ANTITRUST TOMATOES (NC-17): 168 min
-                        APACHE DIVINE (NC-17): 92 min
-                        ARABIA DOGMA (NC-17): 62 min
-                        ARK RIDGEMONT (NC-17): 68 min"""));
+                .body(containsString("ADAPTATION HOLES (NC-17): 50 min\n" +
+                                     "ALADDIN CALENDAR (NC-17): 63 min\n" +
+                                     "ALICE FANTASIA (NC-17): 94 min\n" +
+                                     "ALIEN CENTER (NC-17): 46 min\n" +
+                                     "ALLEY EVOLUTION (NC-17): 180 min\n" +
+                                     "ANONYMOUS HUMAN (NC-17): 179 min\n" +
+                                     "ANTITRUST TOMATOES (NC-17): 168 min\n" +
+                                     "APACHE DIVINE (NC-17): 92 min\n" +
+                                     "ARABIA DOGMA (NC-17): 62 min\n" +
+                                     "ARK RIDGEMONT (NC-17): 68 min"));
     }
 
 
@@ -55,17 +53,16 @@ public class ExampleResourceTest {
                 .when().get("/startsWithSort/K/10")
                 .then()
                 .statusCode(200)
-                .body(containsString("""
-                        KWAI HOMEWARD: 46 min
-                        KILL BROTHERHOOD: 54 min
-                        KNOCK WARLOCK: 71 min
-                        KANE EXORCIST: 92 min
-                        KARATE MOON: 120 min
-                        KISSING DOLLS: 141 min
-                        KILLER INNOCENT: 161 min
-                        KISS GLORY: 163 min
-                        KENTUCKIAN GIANT: 169 min
-                        KRAMER CHOCOLATE: 171 min"""));
+                .body(containsString("KWAI HOMEWARD: 46 min\n" +
+                                     "KILL BROTHERHOOD: 54 min\n" +
+                                     "KNOCK WARLOCK: 71 min\n" +
+                                     "KANE EXORCIST: 92 min\n" +
+                                     "KARATE MOON: 120 min\n" +
+                                     "KISSING DOLLS: 141 min\n" +
+                                     "KILLER INNOCENT: 161 min\n" +
+                                     "KISS GLORY: 163 min\n" +
+                                     "KENTUCKIAN GIANT: 169 min\n" +
+                                     "KRAMER CHOCOLATE: 171 min"));
     }
 
     @Test
@@ -74,9 +71,7 @@ public class ExampleResourceTest {
                 .when().get("/actors/CRY")
                 .then()
                 .statusCode(200)
-                .body(containsString("""
-                        CRYSTAL BREAKING: fay wood, jayne neeson, liza bergman, reese kilmer, penelope cronyn
-                        """));
+                .body(containsString("CRYSTAL BREAKING: fay wood, jayne neeson, liza bergman, reese kilmer, penelope cronyn\n"));
     }
     
     @Test
@@ -85,28 +80,26 @@ public class ExampleResourceTest {
                 .when().get("/paging/2")
                 .then()
                 .statusCode(200)
-                .body(containsString("""
-                        FRISCO FORREST: 51 min
-                        CHAMPION FLATLINERS: 51 min
-                        HALL CASSIDY: 51 min
-                        DEEP CRUSADE: 51 min
-                        SIDE ARK: 52 min
-                        LUST LOCK: 52 min
-                        SPARTACUS CHEAPER: 52 min
-                        CADDYSHACK JEDI: 52 min
-                        TROJAN TOMORROW: 52 min
-                        HARPER DYING: 52 min
-                        WESTWARD SEABISCUIT: 52 min
-                        MAGNIFICENT CHITTY: 53 min
-                        BENEATH RUSH: 53 min
-                        MOVIE SHAKESPEARE: 53 min
-                        SUMMER SCARFACE: 53 min
-                        CABIN FLASH: 53 min
-                        TEQUILA PAST: 53 min
-                        THIN SAGEBRUSH: 53 min
-                        GUMP DATE: 53 min
-                        PRIMARY GLASS: 53 min
-                        """));
+                .body(containsString("FRISCO FORREST: 51 min\n" +
+                                     "CHAMPION FLATLINERS: 51 min\n" +
+                                     "HALL CASSIDY: 51 min\n" +
+                                     "DEEP CRUSADE: 51 min\n" +
+                                     "SIDE ARK: 52 min\n" +
+                                     "LUST LOCK: 52 min\n" +
+                                     "SPARTACUS CHEAPER: 52 min\n" +
+                                     "CADDYSHACK JEDI: 52 min\n" +
+                                     "TROJAN TOMORROW: 52 min\n" +
+                                     "HARPER DYING: 52 min\n" +
+                                     "WESTWARD SEABISCUIT: 52 min\n" +
+                                     "MAGNIFICENT CHITTY: 53 min\n" +
+                                     "BENEATH RUSH: 53 min\n" +
+                                     "MOVIE SHAKESPEARE: 53 min\n" +
+                                     "SUMMER SCARFACE: 53 min\n" +
+                                     "CABIN FLASH: 53 min\n" +
+                                     "TEQUILA PAST: 53 min\n" +
+                                     "THIN SAGEBRUSH: 53 min\n" +
+                                     "GUMP DATE: 53 min\n" +
+                                     "PRIMARY GLASS: 53 min\n"));
     }
 
 }
