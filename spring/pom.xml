@@ -15,7 +15,7 @@
     <version>0.1.0</version>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
         <jpa-streamer-version>3.0.2</jpa-streamer-version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <projectlombok.version>1.18.20</projectlombok.version>
@@ -71,8 +71,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
                         <proc>only</proc>
-                        <source>17</source>
-                        <target>17</target>
+                        <source>11</source>
+                        <target>11</target>
                        <annotationProcessorPaths>
                            <path>
                                <groupId>com.speedment.jpastreamer</groupId>
